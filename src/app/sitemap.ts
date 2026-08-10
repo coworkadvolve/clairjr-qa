@@ -1,14 +1,13 @@
 import type { MetadataRoute } from 'next';
 
 import dataService from '@/lib/data';
-import blogService from '@/lib/blog';
 import { siteConfig } from '@/lib/seo/metadata';
+import blogService from '@/lib/blog';
+
+export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [products, blogPosts] = await Promise.all([
-    dataService.getProducts(),
-    blogService.getPosts(),
-  ]);
+  const [products, blogPosts] = await Promise.all([dataService.getProducts(), blogService.getAllPosts()]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
     '',
@@ -16,12 +15,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/catalogue',
     '/about',
     '/services',
-    '/blog',
     '/franchise',
     '/contact',
     '/privacy-policy',
     '/terms-of-service',
     '/cookie-policy',
+    '/blog',
   ].map((path) => ({
     url: `${siteConfig.url}${path}`,
     lastModified: new Date(),
@@ -38,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
-    lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
+    lastModified: new Date(post.publishedAt),
     changeFrequency: 'monthly',
     priority: 0.7,
   }));

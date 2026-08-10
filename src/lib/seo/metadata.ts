@@ -153,12 +153,6 @@ export const pageMetadata = {
       'Clair Lighting offers lighting design consultation, installation support, energy audits, and maintenance services for commercial and industrial projects.',
     path: '/services',
   }),
-  blog: createPageMetadata({
-    title: 'Lighting Knowledge Hub',
-    description:
-      'Explore practical LED lighting guides, energy-efficiency advice, design ideas, and industry insights from Clair Lighting.',
-    path: '/blog',
-  }),
   franchise: createPageMetadata({
     title: 'Franchise Opportunities',
     description:
@@ -170,6 +164,11 @@ export const pageMetadata = {
     description:
       'Contact Clair Lighting for quotes, technical support, and lighting consultations. Noida HQ with offices across India and international locations.',
     path: '/contact',
+  }),
+  blog: createPageMetadata({
+    title: 'Lighting Insights & Guides',
+    description: 'Practical LED lighting guides, energy-efficiency advice and design insights from the Clair Lighting team.',
+    path: '/blog',
   }),
   privacyPolicy: createPageMetadata({
     title: 'Privacy Policy',

@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
   compiler: {
     styledComponents: true,
   },
@@ -9,6 +10,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['sanity', '@sanity/vision', 'lucide-react'],
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

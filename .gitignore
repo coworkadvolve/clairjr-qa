@@ -27,3 +27,22 @@ dist-ssr
 # Large PDF files (hosted externally)
 public/catalogue/Clair Architectural Indoor Catalogue.pdf
 public/catalogue/*_backup.pdf
+
+# Build output / local artifacts (not part of source)
+out
+.pnpm-store
+tsconfig.tsbuildinfo
+.codex-tmp-bin
+.agents
+
+# Session/reference docs, not site source
+MEMORY.md
+
+# Loose reference assets not used by the app (public/logo is what's actually served)
+logo/
+Domestic Logo/
+Domestic Logo.zip
+Export logo/
+Export logo.zip
+commerciak.png
+hospitality.png

@@ -10,7 +10,6 @@ import { config } from 'dotenv';
 import { resolve } from 'path';
 import { createClient } from '@sanity/client';
 
-config({ path: resolve(process.cwd(), '.env.local') });
 config({ path: resolve(process.cwd(), '.env') });
 
 import categoriesData from '../src/data/categories.json';
@@ -185,29 +184,6 @@ async function seed() {
     ctaSecondaryLabel: aboutPage.ctaSecondaryLabel,
   });
 
-  console.log(`Upserting ${blogPostsData.length} blog posts...`);
-  {
-    const trx = client.transaction();
-    for (const post of blogPostsData) {
-      trx.createOrReplace({
-        _id: safeDocId('blogPost', post.id),
-        _type: 'blogPost',
-        title: post.title,
-        slug: { _type: 'slug', current: post.slug },
-        excerpt: post.excerpt,
-        author: post.author,
-        publishedAt: post.publishedAt,
-        category: post.category,
-        tags: post.tags,
-        featured: post.featured,
-        body: post.body,
-        seoTitle: post.seoTitle,
-        seoDescription: post.seoDescription,
-      });
-    }
-    await trx.commit();
-  }
-
   const testimonials = testimonialsData as Array<{
     id: string;
     name: string;
@@ -328,6 +304,34 @@ async function seed() {
     console.log(
       `  committed ${Math.min(i + batchSize, products.length)} / ${products.length} (${result.results.length} ops)`,
     );
+  }
+
+  const blogPosts = blogPostsData as Array<{
+    id: string; title: string; slug: string; excerpt: string; coverImageUrl: string;
+    coverImageAlt: string; author: string; publishedAt: string; category: string;
+    tags: string[]; featured: boolean; body: Array<Record<string, unknown>>;
+  }>;
+
+  console.log(`Upserting ${blogPosts.length} blog posts...`);
+  {
+    const trx = client.transaction();
+    for (const post of blogPosts) {
+      trx.createOrReplace({
+        _id: safeDocId('blog', post.slug),
+        _type: 'blogPost',
+        title: post.title,
+        slug: { _type: 'slug', current: post.slug },
+        excerpt: post.excerpt,
+        ...(post.coverImageUrl.startsWith('https://') ? { externalCoverImageUrl: post.coverImageUrl } : {}),
+        author: post.author,
+        publishedAt: post.publishedAt,
+        category: post.category,
+        tags: post.tags,
+        featured: post.featured,
+        body: post.body,
+      });
+    }
+    await trx.commit();
   }
 
   console.log('Done. Open /studio and publish any draft documents if needed.');

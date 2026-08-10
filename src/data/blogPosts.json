@@ -1,341 +1,66 @@
 [
   {
-    "id": "commercial-led-lighting-guide",
+    "id": "choose-commercial-led-lighting",
     "title": "How to Choose the Right LED Lighting for Commercial Spaces",
-    "slug": "choose-led-lighting-commercial-spaces",
-    "excerpt": "A practical guide to evaluating illumination levels, colour quality, efficiency, controls, and long-term operating cost for commercial projects.",
+    "slug": "how-to-choose-the-right-led-lighting-for-commercial-spaces",
+    "excerpt": "A practical guide to balancing brightness, efficiency, comfort and long-term value when planning commercial lighting.",
+    "coverImageUrl": "/industries/commercial.png",
+    "coverImageAlt": "Modern commercial space illuminated with LED lighting",
     "author": "Clair Lighting Team",
-    "publishedAt": "2026-06-24T09:00:00.000Z",
+    "publishedAt": "2026-06-18T09:00:00.000Z",
     "category": "Lighting Guides",
     "tags": ["Commercial Lighting", "LED", "Lighting Design"],
     "featured": true,
-    "seoTitle": "How to Choose Commercial LED Lighting",
-    "seoDescription": "Learn how to select efficient commercial LED lighting using illumination levels, colour quality, controls, maintenance, and lifecycle cost.",
     "body": [
-      {
-        "_type": "block",
-        "_key": "intro",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "intro-span",
-            "text": "The right lighting system does more than make a space visible. It supports productivity, improves comfort, presents products accurately, and influences the total energy cost of a building.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "needs-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "needs-heading-span",
-            "text": "Start with the activity, not the fixture",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "needs",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "needs-span",
-            "text": "An office, retail floor, warehouse aisle, reception area, and meeting room all need different light distributions and illumination levels. Define the visual task, ceiling height, surface colours, operating hours, and daylight conditions before selecting wattage or form factor.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "quality-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "quality-heading-span",
-            "text": "Evaluate light quality",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "quality",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "quality-span",
-            "text": "Consider colour temperature, colour rendering index, glare control, flicker performance, and uniformity. A high lumen figure alone cannot guarantee a comfortable or effective environment.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "lifecycle-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "lifecycle-heading-span",
-            "text": "Compare lifecycle cost",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "lifecycle",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "lifecycle-span",
-            "text": "Compare efficacy, rated life, driver quality, warranty, maintenance access, and compatibility with occupancy or daylight controls. The lowest purchase price is rarely the lowest cost over the full life of a commercial installation.",
-            "marks": []
-          }
-        ]
-      }
+      { "_key": "intro", "_type": "block", "style": "normal", "children": [{ "_key": "intro-text", "_type": "span", "text": "The right commercial lighting does more than illuminate a room. It supports concentration, improves visual comfort, presents products clearly and helps control operating costs." }] },
+      { "_key": "needs", "_type": "block", "style": "h2", "children": [{ "_key": "needs-text", "_type": "span", "text": "Start with the purpose of the space" }] },
+      { "_key": "needs-body", "_type": "block", "style": "normal", "children": [{ "_key": "needs-body-text", "_type": "span", "text": "An office, retail floor, warehouse and reception area all need different light levels and beam patterns. Define the activities in each zone before selecting fixtures." }] },
+      { "_key": "quality", "_type": "block", "style": "h2", "children": [{ "_key": "quality-text", "_type": "span", "text": "Evaluate light quality, not wattage alone" }] },
+      { "_key": "quality-body", "_type": "block", "style": "normal", "children": [{ "_key": "quality-body-text", "_type": "span", "text": "Compare lumen output, colour rendering, glare control and colour temperature. Efficient optics can deliver better usable light with less energy." }] },
+      { "_key": "ownership", "_type": "block", "style": "h2", "children": [{ "_key": "ownership-text", "_type": "span", "text": "Consider the full cost of ownership" }] },
+      { "_key": "ownership-body", "_type": "block", "style": "normal", "children": [{ "_key": "ownership-body-text", "_type": "span", "text": "A dependable driver, suitable thermal management and a strong warranty reduce maintenance interruptions and replacement costs over the life of an installation." }] }
     ]
   },
   {
-    "id": "lumens-wattage-colour-temperature",
+    "id": "lighting-terms-explained",
     "title": "Lumens, Wattage and Colour Temperature Explained",
-    "slug": "lumens-wattage-colour-temperature-explained",
-    "excerpt": "Understand the three lighting specifications buyers encounter most often and how to use each one when comparing modern LED products.",
+    "slug": "lumens-wattage-and-colour-temperature-explained",
+    "excerpt": "Understand the three lighting specifications that make it easier to compare LED products and choose confidently.",
+    "coverImageUrl": "/bulb.webp",
+    "coverImageAlt": "LED bulb representing common lighting specifications",
     "author": "Clair Lighting Team",
-    "publishedAt": "2026-06-12T09:00:00.000Z",
+    "publishedAt": "2026-05-27T09:00:00.000Z",
     "category": "Lighting Guides",
     "tags": ["Lumens", "Wattage", "Colour Temperature"],
     "featured": true,
-    "seoTitle": "Lumens, Wattage and Colour Temperature",
-    "seoDescription": "A clear explanation of lumens, wattage and colour temperature, with practical guidance for comparing LED lighting products.",
     "body": [
-      {
-        "_type": "block",
-        "_key": "intro",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "intro-span",
-            "text": "LED technology changed the way lighting products should be compared. Wattage is no longer a reliable shortcut for brightness, so buyers need to understand a few separate measurements.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "lumens-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "lumens-heading-span",
-            "text": "Lumens measure light output",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "lumens",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "lumens-span",
-            "text": "Lumens describe the quantity of visible light produced. Use delivered lumens and the fixture's optical distribution when judging whether a product can illuminate the intended area.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "watts-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "watts-heading-span",
-            "text": "Wattage measures power consumption",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "watts",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "watts-span",
-            "text": "Watts indicate electrical demand. Comparing lumens per watt helps show how efficiently products turn electricity into useful light, but efficiency should be considered alongside reliability and light quality.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "cct-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "cct-heading-span",
-            "text": "Colour temperature shapes atmosphere",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "cct",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "cct-span",
-            "text": "Measured in kelvin, lower colour temperatures appear warmer while higher values appear cooler. The best choice depends on the materials, activity, desired atmosphere, and surrounding daylight.",
-            "marks": []
-          }
-        ]
-      }
+      { "_key": "intro", "_type": "block", "style": "normal", "children": [{ "_key": "intro-text", "_type": "span", "text": "Lighting labels contain several numbers, but each answers a different question. Knowing the difference helps you compare products accurately." }] },
+      { "_key": "lumens", "_type": "block", "style": "h2", "children": [{ "_key": "lumens-text", "_type": "span", "text": "Lumens measure visible light" }] },
+      { "_key": "lumens-body", "_type": "block", "style": "normal", "children": [{ "_key": "lumens-body-text", "_type": "span", "text": "Lumens indicate how much light a source produces. Use lumen output when comparing brightness between modern LED fixtures." }] },
+      { "_key": "watts", "_type": "block", "style": "h2", "children": [{ "_key": "watts-text", "_type": "span", "text": "Watts measure energy use" }] },
+      { "_key": "watts-body", "_type": "block", "style": "normal", "children": [{ "_key": "watts-body-text", "_type": "span", "text": "Wattage tells you how much electrical power the fitting consumes. Lumens per watt is a useful indicator of efficiency." }] },
+      { "_key": "cct", "_type": "block", "style": "h2", "children": [{ "_key": "cct-text", "_type": "span", "text": "Colour temperature shapes the atmosphere" }] },
+      { "_key": "cct-body", "_type": "block", "style": "normal", "children": [{ "_key": "cct-body-text", "_type": "span", "text": "Lower Kelvin values feel warm and relaxed, while higher values appear cooler and more alert. Choose a temperature that suits the activity and finishes in the space." }] }
     ]
   },
   {
-    "id": "energy-efficient-lighting-business",
+    "id": "energy-efficient-investment",
     "title": "Why Energy-Efficient Lighting Is a Smart Business Investment",
-    "slug": "energy-efficient-lighting-business-investment",
-    "excerpt": "Efficient lighting can reduce operating cost while improving visibility, maintenance planning, and control across commercial and industrial facilities.",
+    "slug": "why-energy-efficient-lighting-is-a-smart-business-investment",
+    "excerpt": "Efficient LED systems can reduce energy use, maintenance demands and lifecycle costs while improving the workplace.",
+    "coverImageUrl": "/industries/industrial.png",
+    "coverImageAlt": "Energy-efficient lighting installed in an industrial facility",
     "author": "Clair Lighting Team",
-    "publishedAt": "2026-05-29T09:00:00.000Z",
+    "publishedAt": "2026-04-30T09:00:00.000Z",
     "category": "Energy Efficiency",
-    "tags": ["Energy Efficiency", "Business", "LED Retrofit"],
+    "tags": ["Energy Efficiency", "Business", "LED Upgrade"],
     "featured": true,
-    "seoTitle": "Energy-Efficient Lighting for Businesses",
-    "seoDescription": "Discover how efficient LED lighting can reduce energy and maintenance costs while improving control in business facilities.",
     "body": [
-      {
-        "_type": "block",
-        "_key": "intro",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "intro-span",
-            "text": "Lighting often operates for long hours, making it a practical target for efficiency improvements. A well-planned upgrade can deliver benefits beyond a smaller electricity bill.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "energy-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "energy-heading-span",
-            "text": "Lower connected load",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "energy",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "energy-span",
-            "text": "Modern LED systems can deliver the required illumination using less power than older technologies. Controls can reduce consumption further by responding to occupancy, schedules, and available daylight.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "maintenance-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "maintenance-heading-span",
-            "text": "More predictable maintenance",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "maintenance",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "maintenance-span",
-            "text": "Long-life products reduce replacement frequency, access equipment, labour disruption, and spare inventory. Product quality and thermal management remain essential to achieving the expected service life.",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "plan-heading",
-        "style": "h2",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "plan-heading-span",
-            "text": "Build the business case",
-            "marks": []
-          }
-        ]
-      },
-      {
-        "_type": "block",
-        "_key": "plan",
-        "style": "normal",
-        "markDefs": [],
-        "children": [
-          {
-            "_type": "span",
-            "_key": "plan-span",
-            "text": "Record existing wattage, operating hours, maintenance costs, and illumination levels. Compare those figures with the proposed design and verify the result through a pilot area before a large rollout.",
-            "marks": []
-          }
-        ]
-      }
+      { "_key": "intro", "_type": "block", "style": "normal", "children": [{ "_key": "intro-text", "_type": "span", "text": "Lighting operates for thousands of hours in many commercial and industrial buildings, making it a practical place to reduce energy consumption." }] },
+      { "_key": "savings", "_type": "block", "style": "h2", "children": [{ "_key": "savings-text", "_type": "span", "text": "Savings extend beyond electricity" }] },
+      { "_key": "savings-body", "_type": "block", "style": "normal", "children": [{ "_key": "savings-body-text", "_type": "span", "text": "Long-life LED fixtures reduce replacement labour and disruption. Controls such as occupancy and daylight sensors can improve savings further." }] },
+      { "_key": "planning", "_type": "block", "style": "h2", "children": [{ "_key": "planning-text", "_type": "span", "text": "Plan upgrades around measurable outcomes" }] },
+      { "_key": "planning-body", "_type": "block", "style": "normal", "children": [{ "_key": "planning-body-text", "_type": "span", "text": "Record existing power, operating hours and maintenance costs, then compare the proposed system. A lighting audit turns an upgrade into a clear business case." }] }
     ]
   }
 ]

@@ -102,39 +102,26 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
   };
 }
 
-export function articleJsonLd(post: BlogPost) {
+export function blogPostingJsonLd(post: BlogPost) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.seoDescription || post.excerpt,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    author: { '@type': 'Organization', name: post.author },
+    publisher: { '@type': 'Organization', name: siteConfig.name, logo: { '@type': 'ImageObject', url: siteConfig.ogImage } },
     mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
-    author: {
-      '@type': 'Organization',
-      name: post.author,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: siteConfig.name,
-      logo: {
-        '@type': 'ImageObject',
-        url: siteConfig.ogImage,
-      },
-    },
-    ...(post.coverImage ? { image: [post.coverImage] } : {}),
-    ...(post.tags.length > 0 ? { keywords: post.tags.join(', ') } : {}),
+    ...(post.coverImageUrl ? { image: post.coverImageUrl.startsWith('http') ? post.coverImageUrl : `${siteConfig.url}${post.coverImageUrl}` } : {}),
+    keywords: post.tags.join(', '),
   };
 }
 
 export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
-  const serialized = JSON.stringify(data).replace(/</g, '\\u003c');
-
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: serialized }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
 }

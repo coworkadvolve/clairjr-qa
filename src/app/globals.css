@@ -108,46 +108,20 @@
   }
 
   .blog-prose {
-    @apply text-lg leading-8 text-neutral-700;
+    @apply text-lg leading-8 text-neutral-600;
+    counter-reset: blog-section;
   }
 
-  .blog-prose > * + * {
-    @apply mt-6;
-  }
-
-  .blog-prose h2 {
-    @apply mt-12 text-3xl font-bold leading-tight text-neutral-900;
-  }
-
-  .blog-prose h3 {
-    @apply mt-10 text-2xl font-bold leading-tight text-neutral-900;
-  }
-
-  .blog-prose blockquote {
-    @apply my-8 border-l-4 border-brand-orange bg-orange-50 px-6 py-4 text-xl italic text-neutral-800;
-  }
-
-  .blog-prose ul {
-    @apply list-disc space-y-2 pl-6;
-  }
-
-  .blog-prose ol {
-    @apply list-decimal space-y-2 pl-6;
-  }
-
-  .blog-prose a {
-    @apply font-medium text-brand-orange underline underline-offset-4;
-  }
-
-  .blog-prose figure {
-    @apply my-10;
-  }
-
-  .blog-prose figure img {
-    @apply w-full;
-  }
-
-  .blog-prose figcaption {
-    @apply mt-3 text-center text-sm text-neutral-500;
-  }
+  .blog-prose > * + * { @apply mt-7; }
+  .blog-prose > p:first-child { @apply mb-14 border-l-2 border-brand-orange pl-6 text-xl leading-9 text-neutral-800; }
+  .blog-prose h2 { @apply relative mt-16 text-3xl font-bold leading-tight text-neutral-900; counter-increment: blog-section; }
+  .blog-prose h2::before { content: counter(blog-section, decimal-leading-zero); @apply mb-3 block text-sm font-semibold tracking-wider text-brand-orange md:absolute md:-left-12 md:top-2 md:mb-0; }
+  .blog-prose h3 { @apply mt-9 text-2xl font-bold text-neutral-900; }
+  .blog-prose blockquote { @apply my-10 border-l-2 border-brand-orange bg-orange-50 px-6 py-5 text-xl text-neutral-800; }
+  .blog-prose a { @apply font-semibold text-brand-orange underline underline-offset-4; }
+  .blog-prose strong { @apply font-semibold text-neutral-900; }
+  .blog-prose code { @apply rounded bg-neutral-100 px-1.5 py-0.5 text-base; }
+  .blog-prose figure { @apply my-10; }
+  .blog-prose figure img { @apply w-full rounded-lg; }
+  .blog-prose figcaption { @apply mt-2 text-center text-sm text-neutral-500; }
 }

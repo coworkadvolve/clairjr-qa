@@ -4,9 +4,9 @@ export const routes = {
   catalogue: '/catalogue',
   about: '/about',
   services: '/services',
-  blog: '/blog',
   franchise: '/franchise',
   contact: '/contact',
+  blog: '/blog',
   privacyPolicy: '/privacy-policy',
   termsOfService: '/terms-of-service',
   cookiePolicy: '/cookie-policy',
@@ -20,9 +20,9 @@ export function pathnameToNavKey(pathname: string): string {
   if (pathname.startsWith('/catalogue')) return 'catalogue';
   if (pathname.startsWith('/about')) return 'about';
   if (pathname.startsWith('/services')) return 'services';
-  if (pathname.startsWith('/blog')) return 'blog';
   if (pathname.startsWith('/franchise')) return 'franchise';
   if (pathname.startsWith('/contact')) return 'contact';
+  if (pathname.startsWith('/blog')) return 'blog';
   return 'home';
 }
 

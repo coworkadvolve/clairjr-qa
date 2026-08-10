@@ -1,168 +1,94 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { PortableText, type PortableTextComponents } from '@portabletext/react';
-import { ArrowLeft, CalendarDays, Clock3, UserRound } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock } from 'lucide-react';
 
-import blogService, { formatBlogDate } from '@/lib/blog';
+import { BlogBody } from '@/components/BlogBody';
+import { formatBlogDate } from '@/components/BlogCard';
+import blogService from '@/lib/blog';
 import { routes } from '@/lib/routes';
-import { articleJsonLd, breadcrumbJsonLd, JsonLd } from '@/lib/seo/jsonld';
 import { createPageMetadata, siteConfig } from '@/lib/seo/metadata';
+import { blogPostingJsonLd, breadcrumbJsonLd, JsonLd } from '@/lib/seo/jsonld';
 
-export const revalidate = 60;
-interface BlogPostPageProps {
-  params: Promise<{ slug: string }>;
-}
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const slugs = await blogService.getSlugs();
-  return slugs.map((slug) => ({ slug }));
+  const posts = await blogService.getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await blogService.getPostBySlug(slug);
-
-  if (!post) {
-    return { title: 'Article Not Found', robots: { index: false, follow: false } };
-  }
-
-  const metadata = createPageMetadata({
+  if (!post) return createPageMetadata({ title: 'Article not found', description: 'The requested article could not be found.', path: `/blog/${slug}`, noIndex: true });
+  return createPageMetadata({
     title: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
     path: routes.blogPost(post.slug),
-    image: post.coverImage || undefined,
+    image: post.coverImageUrl || undefined,
   });
-
-  return {
-    ...metadata,
-    authors: [{ name: post.author }],
-    openGraph: {
-      ...metadata.openGraph,
-      type: 'article',
-      publishedTime: post.publishedAt,
-      authors: [post.author],
-      tags: post.tags,
-    },
-  };
 }
 
-const portableTextComponents: PortableTextComponents = {
-  block: {
-    h2: ({ children }) => <h2>{children}</h2>,
-    h3: ({ children }) => <h3>{children}</h3>,
-    blockquote: ({ children }) => <blockquote>{children}</blockquote>,
-  },
-  marks: {
-    link: ({ children, value }) => {
-      const href = typeof value?.href === 'string' ? value.href : '#';
-      const openInNewTab = Boolean(value?.openInNewTab);
-      return (
-        <a
-          href={href}
-          target={openInNewTab ? '_blank' : undefined}
-          rel={openInNewTab ? 'noopener noreferrer' : undefined}
-        >
-          {children}
-        </a>
-      );
-    },
-  },
-  types: {
-    image: ({ value }) => {
-      if (!value?.url) return null;
-      return (
-        <figure>
-          <img src={value.url} alt={value.alt || ''} />
-          {value.caption ? <figcaption>{value.caption}</figcaption> : null}
-        </figure>
-      );
-    },
-  },
-};
-
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await blogService.getPostBySlug(slug);
-
   if (!post) notFound();
+  const posts = await blogService.getAllPosts();
+  const currentIndex = posts.findIndex((item) => item.slug === post.slug);
+  const previousPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+  const nextPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
 
   return (
-    <>
-      <JsonLd
-        data={[
-          articleJsonLd(post),
-          breadcrumbJsonLd([
-            { name: 'Home', url: siteConfig.url },
-            { name: 'Blog', url: `${siteConfig.url}${routes.blog}` },
-            { name: post.title, url: `${siteConfig.url}${routes.blogPost(post.slug)}` },
-          ]),
-        ]}
-      />
-
-      <article className="bg-white">
-        <header className="bg-neutral-900 py-16 text-white md:py-24">
-          <div className="container mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
-            <Link
-              href={routes.blog}
-              className="mb-8 inline-flex items-center gap-2 text-neutral-300 transition-colors hover:text-brand-orange"
-            >
-              <ArrowLeft size={18} />
-              Back to all articles
-            </Link>
-            <span className="mb-5 block text-sm font-semibold uppercase tracking-[0.2em] text-brand-orange">
-              {post.category}
-            </span>
-            <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl">{post.title}</h1>
-            <p className="mb-8 text-xl leading-relaxed text-neutral-300">{post.excerpt}</p>
-            <div className="flex flex-wrap gap-5 text-sm text-neutral-300">
-              <span className="flex items-center gap-2">
-                <UserRound size={16} />
-                {post.author}
-              </span>
-              <span className="flex items-center gap-2">
-                <CalendarDays size={16} />
-                {formatBlogDate(post.publishedAt)}
-              </span>
-              <span className="flex items-center gap-2">
-                <Clock3 size={16} />
-                {post.readingTime} min read
-              </span>
+    <main className="bg-white">
+      <JsonLd data={[
+        blogPostingJsonLd(post),
+        breadcrumbJsonLd([
+          { name: 'Home', url: siteConfig.url },
+          { name: 'Blog', url: `${siteConfig.url}/blog` },
+          { name: post.title, url: `${siteConfig.url}${routes.blogPost(post.slug)}` },
+        ]),
+      ]} />
+      <article className="overflow-hidden">
+        <header className="bg-[#0d0805] py-10 text-white md:py-14 lg:py-16">
+          <div className="container mx-auto max-w-6xl px-4 md:px-6">
+            <Link href={routes.blog} className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition hover:text-brand-orange"><ArrowLeft size={16} /> All articles</Link>
+            <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+              <div>
+                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-brand-orange">{post.category}</p>
+                <h1 className="text-balance text-4xl font-bold leading-[1.04] sm:text-5xl md:text-[3.5rem]">{post.title}</h1>
+                <p className="mt-7 max-w-2xl text-lg leading-8 text-neutral-400">{post.excerpt}</p>
+                <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-400">
+                  <span className="font-medium text-white">{post.author}</span><span className="text-neutral-700">/</span><time dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time><span className="flex items-center gap-1.5"><Clock size={15} /> {post.readingTime} min read</span>
+                </div>
+              </div>
+              {post.coverImageUrl && (
+                <figure>
+                  <img src={post.coverImageUrl} alt={post.coverImageAlt} className="aspect-[4/3] w-full rounded-[15px] object-cover" />
+                  <figcaption className="mt-3 text-xs leading-5 text-neutral-500">{post.coverImageAlt}</figcaption>
+                </figure>
+              )}
             </div>
           </div>
         </header>
-
-        {post.coverImage ? (
-          <div className="container mx-auto -mt-1 max-w-5xl px-4 md:px-6 lg:px-8">
-            <div className="aspect-[16/7] overflow-hidden bg-neutral-100">
-              <img
-                src={post.coverImage}
-                alt={post.coverImageAlt}
-                className="h-full w-full object-cover"
-              />
+        <div className="container mx-auto max-w-4xl px-4 py-16 md:px-6 md:py-24">
+          <div className="mx-auto max-w-3xl"><BlogBody body={post.body} /></div>
+          {post.tags.length > 0 && (
+            <div className="mx-auto mt-16 flex max-w-3xl flex-wrap gap-2 border-t border-neutral-200 pt-8">
+              {post.tags.map((tag) => <span key={tag} className="rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-xs font-medium text-neutral-600">{tag}</span>)}
             </div>
-          </div>
-        ) : null}
-
-        <div className="container mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-20">
-          <div className="blog-prose">
-            <PortableText value={post.body} components={portableTextComponents} />
-          </div>
-
-          {post.tags.length > 0 ? (
-            <div className="mt-12 flex flex-wrap gap-2 border-t border-neutral-200 pt-8">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-neutral-100 px-3 py-1 text-sm font-medium text-neutral-700"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          ) : null}
+          )}
         </div>
+        {(previousPost || nextPost) && (
+          <nav aria-label="More articles" className="grid border-y border-neutral-200 md:grid-cols-2">
+            <div className="border-b border-neutral-200 p-8 md:border-b-0 md:border-r md:p-12 lg:pl-[max(3rem,calc((100vw-72rem)/2))]">
+              {previousPost && <Link href={routes.blogPost(previousPost.slug)} className="group block"><span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange"><ArrowLeft size={14} /> Previous</span><span className="mt-4 block max-w-lg text-xl font-semibold text-neutral-900 transition group-hover:text-brand-orange">{previousPost.title}</span></Link>}
+            </div>
+            <div className="p-8 text-left md:p-12 md:text-right lg:pr-[max(3rem,calc((100vw-72rem)/2))]">
+              {nextPost && <Link href={routes.blogPost(nextPost.slug)} className="group block"><span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange md:justify-end">Next <ArrowRight size={14} /></span><span className="mt-4 block text-xl font-semibold text-neutral-900 transition group-hover:text-brand-orange">{nextPost.title}</span></Link>}
+            </div>
+          </nav>
+        )}
       </article>
-    </>
+    </main>
   );
 }

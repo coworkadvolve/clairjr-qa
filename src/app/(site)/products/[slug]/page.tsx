@@ -10,7 +10,7 @@ import {
 } from '@/lib/seo/jsonld';
 import { createProductMetadata, siteConfig } from '@/lib/seo/metadata';
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const products = await dataService.getProducts();

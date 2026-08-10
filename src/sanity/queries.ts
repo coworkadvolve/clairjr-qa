@@ -116,43 +116,26 @@ export const aboutPageQuery = `*[_type == "aboutPage" && _id == "aboutPage"][0] 
   ctaSecondaryLabel
 }`;
 
-const blogPostProjection = `{
+const blogPostFields = `
   _id,
   title,
   "slug": slug.current,
   excerpt,
-  "coverImageUrl": coalesce(coverImage.asset->url, externalCoverImageUrl),
+  coverImage,
   "coverImageAlt": coverImage.alt,
+  externalCoverImageUrl,
   author,
   publishedAt,
   category,
   tags,
   featured,
-  body[]{
-    ...,
-    _type == "image" => {
-      ...,
-      "url": asset->url
-    }
-  },
+  body,
   seoTitle,
   seoDescription
-}`;
+`;
 
-export const blogPostsQuery = `*[
-  _type == "blogPost" &&
-  defined(slug.current) &&
-  publishedAt <= now()
-] | order(publishedAt desc) ${blogPostProjection}`;
+export const blogPostsQuery = `*[_type == "blogPost" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()] | order(publishedAt desc) {${blogPostFields}}`;
 
-export const blogPostBySlugQuery = `*[
-  _type == "blogPost" &&
-  slug.current == $slug &&
-  publishedAt <= now()
-][0] ${blogPostProjection}`;
+export const blogPostBySlugQuery = `*[_type == "blogPost" && slug.current == $slug && defined(publishedAt) && publishedAt <= now()][0] {${blogPostFields}}`;
 
-export const blogPostSlugsQuery = `*[
-  _type == "blogPost" &&
-  defined(slug.current) &&
-  publishedAt <= now()
-].slug.current`;
+export const blogPostSlugsQuery = `*[_type == "blogPost" && defined(slug.current) && defined(publishedAt) && publishedAt <= now()] { "slug": slug.current }`;

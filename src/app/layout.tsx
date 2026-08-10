@@ -31,9 +31,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={barlow.variable}>
-      <head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZF5584V5J"></script>
-      <script dangerouslySetInnerHTML={{ __html: "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-SZF5584V5J');" }} /></head>
       <body className="min-h-screen bg-white">{children}</body>
     </html>
   );

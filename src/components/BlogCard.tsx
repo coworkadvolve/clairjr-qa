@@ -1,67 +1,37 @@
 import Link from 'next/link';
-import { ArrowRight, CalendarDays, Clock3, Lightbulb } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 
-import type { BlogPostSummary } from '@/lib/blog';
-import { formatBlogDate } from '@/lib/blog';
+import type { BlogPost } from '@/lib/blog';
 import { routes } from '@/lib/routes';
 
-interface BlogCardProps {
-  post: BlogPostSummary;
+export function formatBlogDate(value: string) {
+  return new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(value));
 }
 
-export function BlogCard({ post }: BlogCardProps) {
+export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <Link
-        href={routes.blogPost(post.slug)}
-        className="block aspect-[16/9] overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-800 to-brand-orange"
-        aria-label={`Read ${post.title}`}
-      >
-        {post.coverImage ? (
-          <img
-            src={post.coverImage}
-            alt={post.coverImageAlt}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <Link href={routes.blogPost(post.slug)} className="block aspect-[16/10] overflow-hidden bg-neutral-100">
+        {post.coverImageUrl ? (
+          <img src={post.coverImageUrl} alt={post.coverImageAlt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
         ) : (
-          <span className="flex h-full items-center justify-center">
-            <Lightbulb className="text-white/80" size={52} />
-          </span>
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-neutral-800 to-neutral-950 text-2xl font-bold text-white">Clair Insights</div>
         )}
       </Link>
-
       <div className="flex flex-1 flex-col p-6">
-        <div className="mb-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500">
-          <span className="bg-brand-orange/10 px-3 py-1 font-semibold uppercase tracking-wider text-brand-orange">
-            {post.category}
-          </span>
-          <span className="flex items-center gap-1">
-            <CalendarDays size={14} />
-            {formatBlogDate(post.publishedAt)}
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock3 size={14} />
-            {post.readingTime} min read
-          </span>
+        <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold uppercase tracking-wider">
+          <span className="text-brand-orange">{post.category}</span>
+          <span className="text-neutral-300">•</span>
+          <time className="text-neutral-500" dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time>
         </div>
-
-        <h2 className="mb-3 text-2xl font-bold leading-tight text-neutral-900">
-          <Link
-            href={routes.blogPost(post.slug)}
-            className="transition-colors hover:text-brand-orange"
-          >
-            {post.title}
-          </Link>
-        </h2>
-        <p className="mb-6 line-clamp-3 leading-relaxed text-neutral-600">{post.excerpt}</p>
-
-        <Link
-          href={routes.blogPost(post.slug)}
-          className="mt-auto inline-flex items-center gap-2 font-semibold text-brand-orange transition-all hover:gap-3"
-        >
-          Read article
-          <ArrowRight size={17} />
-        </Link>
+        <h3 className="mb-3 text-2xl font-bold leading-tight text-neutral-900">
+          <Link href={routes.blogPost(post.slug)} className="transition-colors hover:text-brand-orange">{post.title}</Link>
+        </h3>
+        <p className="mb-6 line-clamp-3 flex-1 leading-relaxed text-neutral-600">{post.excerpt}</p>
+        <div className="flex items-center justify-between border-t border-neutral-100 pt-4">
+          <span className="flex items-center gap-1.5 text-sm text-neutral-500"><Clock size={15} /> {post.readingTime} min read</span>
+          <Link href={routes.blogPost(post.slug)} className="flex items-center gap-2 font-semibold text-brand-orange">Read article <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" /></Link>
+        </div>
       </div>
     </article>
   );
