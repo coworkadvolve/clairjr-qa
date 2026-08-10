@@ -63,7 +63,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
               </div>
               {post.coverImageUrl && (
                 <figure>
-                  <img src={post.coverImageUrl} alt={post.coverImageAlt} className="aspect-[4/3] w-full rounded-[15px] object-cover" />
+                  <img src={post.coverImageUrl} alt={post.coverImageAlt} className="h-auto w-full rounded-[15px] object-contain" />
                   <figcaption className="mt-3 text-xs leading-5 text-neutral-500">{post.coverImageAlt}</figcaption>
                 </figure>
               )}
