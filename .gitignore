@@ -39,7 +39,7 @@ tsconfig.tsbuildinfo
 MEMORY.md
 
 # Loose reference assets not used by the app (public/logo is what's actually served)
-logo/
+/logo/
 Domestic Logo/
 Domestic Logo.zip
 Export logo/
