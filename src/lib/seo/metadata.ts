@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 
 import { siteUrl } from '@/sanity/env';
 
-const defaultTitle = 'Clair Electronics Private Limited - Intelligent Lighting Solutions';
+const defaultTitle = 'Clair Electronics Limited - Intelligent Lighting Solutions';
 const defaultDescription =
   'Clair Electronics - Leading provider of eco-friendly, energy-efficient LED lighting solutions for commercial, industrial, and architectural applications since 2006. ISO 9001 certified with 50,000+ installations worldwide.';
 
 export const siteConfig = {
-  name: 'Clair Electronics Private Limited',
+  name: 'Clair Electronics Limited',
   shortName: 'Clair Lighting',
   title: defaultTitle,
   description: defaultDescription,
