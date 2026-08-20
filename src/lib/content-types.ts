@@ -126,7 +126,7 @@ export const defaultAboutPage: AboutPageContent = {
 };
 
 export const defaultSiteSettings: SiteSettings = {
-  companyName: 'Clair Electronics Private Limited',
+  companyName: 'Clair Electronics Limited',
   headerTagline: 'Since 2006 | Trusted Lighting Solutions',
   primaryEmail: 'admin@clairjg.com',
   secondaryEmail: null,
