@@ -42,7 +42,7 @@ export function AboutPage({ content }: AboutPageProps) {
           </div>
 
           <div className="relative">
-            <div className="aspect-video bg-neutral-100 rounded-lg overflow-hidden">
+            <div className="h-[260px] md:h-[460px] bg-neutral-100 rounded-lg overflow-hidden">
               {content.storyImage ? (
                 <img
                   src={content.storyImage}
