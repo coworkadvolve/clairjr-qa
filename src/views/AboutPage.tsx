@@ -43,20 +43,11 @@ export function AboutPage({ content }: AboutPageProps) {
 
           <div className="relative">
             <div className="h-[260px] md:h-[460px] bg-neutral-100 rounded-lg overflow-hidden">
-              {content.storyImage ? (
-                <img
-                  src={content.storyImage}
-                  alt={content.storyTitle}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-neutral-400">
-                  <div className="text-center">
-                    <Globe size={64} className="mx-auto mb-4" />
-                    <p>Company Image</p>
-                  </div>
-                </div>
-              )}
+              <img
+                src={content.storyImage || '/about/our-story.webp'}
+                alt={content.storyTitle || 'Clair Lighting Solutions'}
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
