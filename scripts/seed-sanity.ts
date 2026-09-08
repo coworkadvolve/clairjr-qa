@@ -132,10 +132,23 @@ async function seed() {
 
   console.log('Upserting about page...');
   const aboutPage = aboutPageData as {
+    eyebrow: string;
     pageTitle: string;
     heroSubtitle: string;
+    stats: Array<{ value: string; label: string }>;
     storyTitle: string;
     storyParagraphs: string[];
+    storyImage: string;
+    storyBadgeTitle: string;
+    storyBadgeText: string;
+    solutionsTitle: string;
+    solutionsSubtitle: string;
+    solutions: Array<{
+      icon: string;
+      title: string;
+      description: string;
+      image?: string;
+    }>;
     missionVisionTitle: string;
     missionVisionSubtitle: string;
     missionTitle: string;
@@ -145,6 +158,15 @@ async function seed() {
     valuesTitle: string;
     valuesSubtitle: string;
     values: Array<{ icon: string; title: string; description: string }>;
+    leadersTitle: string;
+    leadersText: string;
+    leaders: Array<{
+      name: string;
+      role: string;
+      image: string;
+      description: string;
+    }>;
+    leadersNote: string;
     certificationsTitle: string;
     certificationsSubtitle: string;
     certifications: string[];
@@ -157,10 +179,28 @@ async function seed() {
   await client.createOrReplace({
     _id: 'aboutPage',
     _type: 'aboutPage',
+    eyebrow: aboutPage.eyebrow,
     pageTitle: aboutPage.pageTitle,
     heroSubtitle: aboutPage.heroSubtitle,
+    stats: aboutPage.stats.map((stat, index) => ({
+      _key: arrayKey('stat', index, stat.value),
+      value: stat.value,
+      label: stat.label,
+    })),
     storyTitle: aboutPage.storyTitle,
     storyParagraphs: aboutPage.storyParagraphs,
+    externalStoryImageUrl: aboutPage.storyImage,
+    storyBadgeTitle: aboutPage.storyBadgeTitle,
+    storyBadgeText: aboutPage.storyBadgeText,
+    solutionsTitle: aboutPage.solutionsTitle,
+    solutionsSubtitle: aboutPage.solutionsSubtitle,
+    solutions: aboutPage.solutions.map((solution, index) => ({
+      _key: arrayKey('solution', index, solution.title),
+      icon: solution.icon,
+      title: solution.title,
+      description: solution.description,
+      ...(solution.image ? { externalImageUrl: solution.image } : {}),
+    })),
     missionVisionTitle: aboutPage.missionVisionTitle,
     missionVisionSubtitle: aboutPage.missionVisionSubtitle,
     missionTitle: aboutPage.missionTitle,
@@ -175,6 +215,16 @@ async function seed() {
       title: value.title,
       description: value.description,
     })),
+    leadersTitle: aboutPage.leadersTitle,
+    leadersText: aboutPage.leadersText,
+    leaders: aboutPage.leaders.map((leader, index) => ({
+      _key: arrayKey('leader', index, leader.name),
+      name: leader.name,
+      role: leader.role,
+      externalPhotoUrl: leader.image,
+      description: leader.description,
+    })),
+    leadersNote: aboutPage.leadersNote,
     certificationsTitle: aboutPage.certificationsTitle,
     certificationsSubtitle: aboutPage.certificationsSubtitle,
     certifications: aboutPage.certifications,

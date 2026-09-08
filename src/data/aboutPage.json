@@ -1,48 +1,121 @@
 {
+  "eyebrow": "Since 2006",
   "pageTitle": "About Clair",
-  "heroSubtitle": "Pioneering intelligent lighting solutions since 2006, illuminating spaces with innovation and sustainability.",
-  "storyTitle": "Our Story",
-  "storyParagraphs": [
-    "Founded in 2006, Clair Lighting Solutions emerged from a vision to transform the lighting industry through eco-friendly and intelligent illumination systems. What began as a small enterprise has evolved into a trusted partner for over 500 corporate clients across diverse industries.",
-    "Our journey has been marked by continuous innovation, unwavering commitment to quality, and a dedication to sustainable practices. Today, we stand as industry leaders, having completed over 50,000 installations that combine cutting-edge technology with energy efficiency.",
-    "With ISO 9001 certification and a team of expert engineers, we continue to push the boundaries of what's possible in lighting design, delivering solutions that enhance productivity, reduce energy consumption, and create inspiring environments."
-  ],
-  "storyImage": "/about/our-story.webp",
-  "missionVisionTitle": "Mission & Vision",
-  "missionVisionSubtitle": "Guided by our core values and commitment to excellence",
-  "missionTitle": "Our Mission",
-  "missionText": "To deliver world-class, energy-efficient lighting solutions that enhance productivity, reduce environmental impact, and create inspiring spaces for businesses and communities worldwide.",
-  "visionTitle": "Our Vision",
-  "visionText": "To be the global leader in sustainable lighting innovation, setting new standards for quality, efficiency, and intelligent design in commercial and industrial illumination.",
-  "valuesTitle": "Core Values",
-  "valuesSubtitle": "The principles that drive everything we do",
-  "values": [
+  "heroSubtitle": "Clair Electronics builds reliable, energy-efficient lighting and electrical solutions for homes, businesses, industries, institutions and infrastructure projects.",
+  "stats": [
     {
-      "icon": "zap",
-      "title": "Innovation",
-      "description": "Continuously advancing lighting technology through research and development"
+      "value": "2006",
+      "label": "Founded with LED lighting"
     },
     {
-      "icon": "award",
-      "title": "Excellence",
-      "description": "Maintaining the highest standards in product quality and customer service"
+      "value": "50K+",
+      "label": "Installations completed"
     },
     {
-      "icon": "heart",
-      "title": "Sustainability",
-      "description": "Committed to eco-friendly solutions that protect our planet"
+      "value": "500+",
+      "label": "Corporate clients served"
+    },
+    {
+      "value": "100+",
+      "label": "Years of J.G. Group legacy"
     }
   ],
+  "storyTitle": "From focused LED lighting to a complete electrical ecosystem.",
+  "storyParagraphs": [
+    "Clair began with a clear belief: modern spaces need electrical solutions that are reliable, efficient and built for everyday performance.",
+    "What started as a focused LED lighting business has grown into a wider electrical solutions brand serving homes, commercial spaces, industries, institutions and infrastructure projects.",
+    "Today, Clair brings LED lighting, solar solutions and Tortek by Clair wires & cables together into one practical ecosystem for how a modern space is powered."
+  ],
+  "storyImage": "/about/our-story.webp",
+  "storyBadgeTitle": "ISO",
+  "storyBadgeText": "Quality Certified",
+  "solutionsTitle": "Solutions for Modern Spaces",
+  "solutionsSubtitle": "Lighting, solar, wires and cables brought together for the complete journey of a powered space.",
+  "solutions": [
+    {
+      "icon": "lightbulb",
+      "title": "LED Lighting",
+      "description": "Indoor, outdoor, commercial, industrial and specialty lighting solutions built around each application."
+    },
+    {
+      "icon": "sun",
+      "title": "Solar Solutions",
+      "description": "Cleaner energy solutions for homes, commercial facilities, industries and infrastructure projects."
+    },
+    {
+      "icon": "cable",
+      "title": "Tortek by Clair",
+      "description": "Wires and cables that support safe, reliable connections across powered environments."
+    }
+  ],
+  "missionVisionTitle": "",
+  "missionVisionSubtitle": "",
+  "missionTitle": "Our Mission",
+  "missionText": "To deliver reliable, energy-efficient and application-led electrical solutions that support the way homes, businesses, industries and communities function every day.",
+  "visionTitle": "Our Vision",
+  "visionText": "To become a trusted electrical solutions brand that brings together lighting, wiring, solar and future-ready technologies for modern spaces.",
+  "valuesTitle": "Values That Shape Clair",
+  "valuesSubtitle": "The principles behind every product, process and partnership.",
+  "values": [
+    {
+      "icon": "shieldCheck",
+      "title": "Quality",
+      "description": "Dependable products that perform consistently across real applications."
+    },
+    {
+      "icon": "lightbulb",
+      "title": "Innovation",
+      "description": "Continuous improvement in products, processes and solutions."
+    },
+    {
+      "icon": "leaf",
+      "title": "Sustainability",
+      "description": "Energy-efficient solutions that support responsible long-term use."
+    },
+    {
+      "icon": "eye",
+      "title": "Trust",
+      "description": "Reliable products, transparent processes and dependable service."
+    },
+    {
+      "icon": "trendingUp",
+      "title": "Performance",
+      "description": "Solutions designed to support spaces beyond the first installation."
+    }
+  ],
+  "leadersTitle": "People Behind Clair",
+  "leadersText": "Clair's leadership brings together legacy business values, next-generation strategy and operational execution to support the brand's growth across lighting, solar and wires & cables.",
+  "leaders": [
+    {
+      "name": "Mahesh Jain",
+      "role": "Legacy Leadership",
+      "image": "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80",
+      "description": "Brings decades of business experience, ethical leadership and long-term vision rooted in the J.G. Group legacy."
+    },
+    {
+      "name": "Tanush Jain",
+      "role": "Director",
+      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80",
+      "description": "Brings next-generation strategy, market understanding and a product-led view of Clair's expansion."
+    },
+    {
+      "name": "Avinash Goel",
+      "role": "Chief Executive Officer",
+      "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80",
+      "description": "Leads execution, operational alignment, channel expansion and delivery discipline across the business."
+    }
+  ],
+  "leadersNote": "Leadership visuals are representative and can be replaced with approved portraits.",
   "certificationsTitle": "Certifications & Standards",
-  "certificationsSubtitle": "Recognized for quality and compliance",
+  "certificationsSubtitle": "Clair's commitment to quality is supported by recognised certifications, compliance standards and energy-efficient product development.",
   "certifications": [
     "ISO 9001:2015",
     "CE Certified",
     "RoHS Compliant",
-    "Energy Star"
+    "Energy-Efficient Solutions"
   ],
-  "ctaTitle": "Join Our Journey",
-  "ctaText": "Partner with us to transform your lighting infrastructure with cutting-edge, sustainable solutions.",
-  "ctaPrimaryLabel": "Get Started",
-  "ctaSecondaryLabel": "View All Products"
+  "ctaTitle": "Explore Clair's complete electrical ecosystem.",
+  "ctaText": "Lighting, solar, wires and cables for homes, businesses, industries and infrastructure projects.",
+  "ctaPrimaryLabel": "Request a Quote",
+  "ctaSecondaryLabel": "View Products"
 }

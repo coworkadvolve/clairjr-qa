@@ -1,4 +1,10 @@
-import type { AboutPageContent, AboutPageIcon, Catalogue, SiteSettings, Testimonial } from '@/lib/content-types';
+import type {
+  AboutPageContent,
+  AboutPageIcon,
+  Catalogue,
+  SiteSettings,
+  Testimonial,
+} from '@/lib/content-types';
 import { defaultAboutPage, defaultSiteSettings } from '@/lib/content-types';
 import { urlForImage } from './image';
 
@@ -45,12 +51,26 @@ type SanityCatalogueRow = {
 };
 
 type SanityAboutPageRow = {
+  eyebrow?: string;
   pageTitle?: string;
   heroSubtitle?: string;
+  stats?: Array<{ value?: string; label?: string }>;
   storyTitle?: string;
   storyParagraphs?: string[];
   storyImage?: unknown;
   externalStoryImageUrl?: string;
+  storyBadgeTitle?: string;
+  storyBadgeText?: string;
+  solutionsTitle?: string;
+  solutionsSubtitle?: string;
+  solutions?: Array<{
+    icon?: string;
+    title?: string;
+    description?: string;
+    image?: unknown;
+    imageUrl?: string;
+    externalImageUrl?: string;
+  }>;
   missionVisionTitle?: string;
   missionVisionSubtitle?: string;
   missionTitle?: string;
@@ -60,6 +80,17 @@ type SanityAboutPageRow = {
   valuesTitle?: string;
   valuesSubtitle?: string;
   values?: Array<{ icon?: string; title?: string; description?: string }>;
+  leadersTitle?: string;
+  leadersText?: string;
+  leaders?: Array<{
+    name?: string;
+    role?: string;
+    photo?: unknown;
+    photoUrl?: string;
+    externalPhotoUrl?: string;
+    description?: string;
+  }>;
+  leadersNote?: string;
   certificationsTitle?: string;
   certificationsSubtitle?: string;
   certifications?: string[];
@@ -69,9 +100,25 @@ type SanityAboutPageRow = {
   ctaSecondaryLabel?: string;
 };
 
-const aboutPageIcons = new Set<AboutPageIcon>(['zap', 'award', 'heart', 'target', 'eye', 'globe']);
+const aboutPageIcons = new Set<AboutPageIcon>([
+  'zap',
+  'award',
+  'heart',
+  'target',
+  'eye',
+  'globe',
+  'shieldCheck',
+  'lightbulb',
+  'leaf',
+  'trendingUp',
+  'cable',
+  'sun',
+]);
 
 function resolveStoryImage(storyImage: unknown, externalStoryImageUrl?: string): string {
+  const external = externalStoryImageUrl?.trim();
+  if (external) return external;
+
   if (storyImage && typeof storyImage === 'object') {
     try {
       return urlForImage(storyImage as never).width(1200).quality(85).url();
@@ -80,7 +127,25 @@ function resolveStoryImage(storyImage: unknown, externalStoryImageUrl?: string):
     }
   }
 
-  return externalStoryImageUrl?.trim() || '';
+  return defaultAboutPage.storyImage;
+}
+
+function resolveAboutImage(image: unknown, imageUrl?: string, externalImageUrl?: string): string {
+  const external = externalImageUrl?.trim();
+  if (external) return external;
+
+  const directUrl = imageUrl?.trim();
+  if (directUrl) return directUrl;
+
+  if (image && typeof image === 'object') {
+    try {
+      return urlForImage(image as never).width(900).quality(85).url();
+    } catch {
+      // fall through
+    }
+  }
+
+  return '';
 }
 
 function parseAboutPageIcon(icon?: string): AboutPageIcon {
@@ -183,14 +248,40 @@ export function mapAboutPageRow(row: SanityAboutPageRow | null): AboutPageConten
   if (!row) return defaultAboutPage;
 
   return {
+    eyebrow: row.eyebrow || defaultAboutPage.eyebrow,
     pageTitle: row.pageTitle || defaultAboutPage.pageTitle,
     heroSubtitle: row.heroSubtitle || defaultAboutPage.heroSubtitle,
+    stats:
+      row.stats && row.stats.length > 0
+        ? row.stats
+            .filter((stat) => stat.value && stat.label)
+            .map((stat) => ({
+              value: stat.value!,
+              label: stat.label!,
+            }))
+        : defaultAboutPage.stats,
     storyTitle: row.storyTitle || defaultAboutPage.storyTitle,
     storyParagraphs:
       row.storyParagraphs && row.storyParagraphs.length > 0
         ? row.storyParagraphs
         : defaultAboutPage.storyParagraphs,
     storyImage: resolveStoryImage(row.storyImage, row.externalStoryImageUrl),
+    storyBadgeTitle: row.storyBadgeTitle || defaultAboutPage.storyBadgeTitle,
+    storyBadgeText: row.storyBadgeText || defaultAboutPage.storyBadgeText,
+    solutionsTitle: row.solutionsTitle || defaultAboutPage.solutionsTitle,
+    solutionsSubtitle: row.solutionsSubtitle || defaultAboutPage.solutionsSubtitle,
+    solutions:
+      row.solutions && row.solutions.length > 0
+        ? row.solutions.map((solution, index) => ({
+            icon: parseAboutPageIcon(solution.icon),
+            title: solution.title || '',
+            description: solution.description || '',
+            image:
+              resolveAboutImage(solution.image, solution.imageUrl, solution.externalImageUrl) ||
+              defaultAboutPage.solutions[index]?.image ||
+              '',
+          }))
+        : defaultAboutPage.solutions,
     missionVisionTitle: row.missionVisionTitle || defaultAboutPage.missionVisionTitle,
     missionVisionSubtitle:
       row.missionVisionSubtitle || defaultAboutPage.missionVisionSubtitle,
@@ -208,6 +299,21 @@ export function mapAboutPageRow(row: SanityAboutPageRow | null): AboutPageConten
             description: value.description || '',
           }))
         : defaultAboutPage.values,
+    leadersTitle: row.leadersTitle || defaultAboutPage.leadersTitle,
+    leadersText: row.leadersText || defaultAboutPage.leadersText,
+    leaders:
+      row.leaders && row.leaders.length > 0
+        ? row.leaders.map((leader, index) => ({
+            name: leader.name || '',
+            role: leader.role || '',
+            image:
+              resolveAboutImage(leader.photo, leader.photoUrl, leader.externalPhotoUrl) ||
+              defaultAboutPage.leaders[index]?.image ||
+              '',
+            description: leader.description || '',
+          }))
+        : defaultAboutPage.leaders,
+    leadersNote: row.leadersNote || defaultAboutPage.leadersNote,
     certificationsTitle: row.certificationsTitle || defaultAboutPage.certificationsTitle,
     certificationsSubtitle:
       row.certificationsSubtitle || defaultAboutPage.certificationsSubtitle,

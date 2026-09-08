@@ -1,106 +1,132 @@
 import Link from 'next/link';
-import { Award, Target, Eye, Heart, Zap, Globe, type LucideIcon } from 'lucide-react';
+import {
+  Award,
+  Cable,
+  Eye,
+  Leaf,
+  Lightbulb,
+  ShieldCheck,
+  Sun,
+  Target,
+  TrendingUp,
+  type LucideIcon,
+} from 'lucide-react';
 import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { routes } from '@/lib/routes';
 import type { AboutPageContent, AboutPageIcon } from '@/lib/content-types';
 
-const iconMap: Record<AboutPageIcon, LucideIcon> = {
-  zap: Zap,
-  award: Award,
-  heart: Heart,
-  target: Target,
-  eye: Eye,
-  globe: Globe,
-};
-
 interface AboutPageProps {
   content: AboutPageContent;
 }
 
+const iconMap = {
+  zap: Lightbulb,
+  award: Award,
+  heart: Leaf,
+  target: Target,
+  eye: Eye,
+  globe: Sun,
+  shieldCheck: ShieldCheck,
+  lightbulb: Lightbulb,
+  leaf: Leaf,
+  trendingUp: TrendingUp,
+  cable: Cable,
+  sun: Sun,
+} satisfies Record<AboutPageIcon, LucideIcon>;
+
 export function AboutPage({ content }: AboutPageProps) {
   return (
     <div>
-      <section className="bg-neutral-900 text-white py-20">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.pageTitle}</h1>
-          <p className="text-xl text-neutral-300 max-w-3xl">{content.heroSubtitle}</p>
+      <section className="bg-neutral-900 py-20 text-white">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <div className="mb-5 inline-block bg-brand-orange/15 px-4 py-2">
+              <span className="text-sm font-semibold uppercase tracking-wider text-brand-orange">
+                {content.eyebrow}
+              </span>
+            </div>
+            <h1 className="mb-5 text-4xl font-bold leading-tight md:text-5xl">
+              {content.pageTitle}
+            </h1>
+            <p className="text-xl leading-relaxed text-neutral-300">{content.heroSubtitle}</p>
+          </div>
         </div>
       </section>
 
       <Section background="white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
+          {content.stats.map((stat) => (
+            <div key={stat.value} className="text-center">
+              <div className="mb-2 text-4xl font-bold text-brand-orange md:text-5xl">
+                {stat.value}
+              </div>
+              <div className="font-medium text-neutral-600">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section background="gray">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
+            <h2 className="mb-6 text-3xl font-bold text-neutral-900 md:text-4xl">
               {content.storyTitle}
             </h2>
-            <div className="space-y-4 text-lg text-neutral-700 leading-relaxed">
-              {content.storyParagraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+            <div className="space-y-4 text-lg leading-relaxed text-neutral-700">
+              {content.storyParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </div>
 
           <div className="relative">
-            <div className="h-[260px] md:h-[460px] bg-neutral-100 rounded-lg overflow-hidden">
+            <div className="aspect-square overflow-hidden bg-white">
               <img
-                src={content.storyImage || '/about/our-story.webp'}
-                alt={content.storyTitle || 'Clair Lighting Solutions'}
-                className="w-full h-full object-cover"
+                src={content.storyImage}
+                alt="Clair lighting and electrical products"
+                className="h-full w-full object-cover"
               />
             </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section background="gray">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900">
-            {content.missionVisionTitle}
-          </h2>
-          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            {content.missionVisionSubtitle}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 border border-neutral-200 shadow-sm">
-            <div className="w-16 h-16 bg-brand-orange/10 rounded-full flex items-center justify-center mb-6">
-              <Target className="text-brand-orange" size={32} />
+            <div className="absolute -bottom-6 -left-6 border border-neutral-100 bg-white p-6 shadow-xl">
+              <div className="flex items-center gap-3">
+                <Award className="text-brand-orange" size={32} />
+                <div>
+                  <div className="text-2xl font-bold text-neutral-900">
+                    {content.storyBadgeTitle}
+                  </div>
+                  <div className="text-sm text-neutral-600">{content.storyBadgeText}</div>
+                </div>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-neutral-900">{content.missionTitle}</h3>
-            <p className="text-lg text-neutral-700 leading-relaxed">{content.missionText}</p>
-          </div>
-
-          <div className="bg-white p-8 border border-neutral-200 shadow-sm">
-            <div className="w-16 h-16 bg-brand-orange/10 rounded-full flex items-center justify-center mb-6">
-              <Eye className="text-brand-orange" size={32} />
-            </div>
-            <h3 className="text-2xl font-bold mb-4 text-neutral-900">{content.visionTitle}</h3>
-            <p className="text-lg text-neutral-700 leading-relaxed">{content.visionText}</p>
           </div>
         </div>
       </Section>
 
       <Section background="white">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900">
-            {content.valuesTitle}
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-neutral-900 md:text-4xl">
+            {content.solutionsTitle}
           </h2>
-          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">{content.valuesSubtitle}</p>
+          <p className="mx-auto max-w-3xl text-xl text-neutral-600">{content.solutionsSubtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {content.values.map((value, index) => {
-            const Icon = iconMap[value.icon] ?? Award;
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {content.solutions.map((solution) => {
+            const Icon = iconMap[solution.icon] || Lightbulb;
 
             return (
-              <div key={index} className="text-center">
-                <div className="w-20 h-20 bg-brand-orange/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Icon className="text-brand-orange" size={36} />
+              <div
+                key={solution.title}
+                className="border border-neutral-200 bg-neutral-50 p-8 transition-shadow hover:shadow-lg"
+              >
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10">
+                  <Icon className="text-brand-orange" size={32} />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-neutral-900">{value.title}</h3>
-                <p className="text-neutral-600 leading-relaxed">{value.description}</p>
+                <h3 className="mb-4 text-2xl font-semibold text-neutral-900">
+                  {solution.title}
+                </h3>
+                <p className="leading-relaxed text-neutral-700">{solution.description}</p>
               </div>
             );
           })}
@@ -108,47 +134,141 @@ export function AboutPage({ content }: AboutPageProps) {
       </Section>
 
       <Section background="gray">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="border border-neutral-200 bg-white p-8 shadow-sm">
+            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10">
+              <Target className="text-brand-orange" size={32} />
+            </div>
+            <h2 className="mb-4 text-2xl font-bold text-neutral-900">{content.missionTitle}</h2>
+            <p className="text-lg leading-relaxed text-neutral-700">{content.missionText}</p>
+          </div>
+
+          <div className="border border-neutral-200 bg-white p-8 shadow-sm">
+            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10">
+              <Sun className="text-brand-orange" size={32} />
+            </div>
+            <h2 className="mb-4 text-2xl font-bold text-neutral-900">{content.visionTitle}</h2>
+            <p className="text-lg leading-relaxed text-neutral-700">{content.visionText}</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section background="white">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-neutral-900 md:text-4xl">
+            {content.valuesTitle}
+          </h2>
+          <p className="mx-auto max-w-3xl text-xl text-neutral-600">{content.valuesSubtitle}</p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
+          {content.values.map((value) => {
+            const Icon = iconMap[value.icon] || Award;
+
+            return (
+              <div key={value.title} className="text-center">
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-brand-orange/10">
+                  <Icon className="text-brand-orange" size={36} />
+                </div>
+                <h3 className="mb-3 text-xl font-semibold text-neutral-900">{value.title}</h3>
+                <p className="leading-relaxed text-neutral-600">{value.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
+
+      <Section background="gray">
+        <div>
+          <div className="mb-14 max-w-3xl">
+            <h2 className="mb-6 text-3xl font-bold text-neutral-900 md:text-4xl">
+              {content.leadersTitle}
+            </h2>
+            <p className="text-lg leading-relaxed text-neutral-600">{content.leadersText}</p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            {content.leaders.map((leader) => (
+              <article
+                key={leader.name}
+                className="group overflow-hidden border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
+                  <img
+                    src={leader.image}
+                    alt={`Representative leadership visual for ${leader.name}`}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <div className="mb-2 inline-block bg-brand-orange px-3 py-1">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-white">
+                        {leader.role}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white">{leader.name}</h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="leading-relaxed text-neutral-700">{leader.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {content.leadersNote ? (
+            <p className="mt-5 text-center text-sm text-neutral-500">{content.leadersNote}</p>
+          ) : null}
+        </div>
+      </Section>
+
+      <Section background="white">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-neutral-900 md:text-4xl">
             {content.certificationsTitle}
           </h2>
-          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-xl text-neutral-600">
             {content.certificationsSubtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {content.certifications.map((cert) => (
-            <div key={cert} className="bg-white p-6 border border-neutral-200 text-center">
-              <Award className="text-brand-orange mx-auto mb-3" size={40} />
-              <div className="font-semibold text-neutral-900">{cert}</div>
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          {content.certifications.map((certification) => (
+            <div
+              key={certification}
+              className="border border-neutral-200 bg-neutral-50 p-6 text-center"
+            >
+              <Award className="mx-auto mb-3 text-brand-orange" size={40} />
+              <div className="font-semibold text-neutral-900">{certification}</div>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section background="dark">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">{content.ctaTitle}</h2>
-          <p className="text-xl text-neutral-400 mb-8">{content.ctaText}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={routes.contact}>
-              <Button variant="primary" size="lg">
-                {content.ctaPrimaryLabel}
-              </Button>
-            </Link>
-            <Link href={routes.products}>
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-transparent border-white/30 text-white hover:bg-white hover:text-neutral-900"
-              >
-                {content.ctaSecondaryLabel}
-              </Button>
-            </Link>
+      <section className="bg-brand-orange py-16 text-white md:py-24">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl">{content.ctaTitle}</h2>
+            <p className="mb-8 text-xl text-white/90">{content.ctaText}</p>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link href={routes.contact}>
+                <Button variant="primary" size="lg" className="bg-neutral-900 hover:bg-neutral-800">
+                  {content.ctaPrimaryLabel}
+                </Button>
+              </Link>
+              <Link href={routes.products}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white bg-transparent text-white hover:bg-white hover:text-neutral-900 hover:!text-neutral-900"
+                >
+                  {content.ctaSecondaryLabel}
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 }

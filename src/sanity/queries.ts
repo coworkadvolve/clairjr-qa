@@ -92,12 +92,26 @@ export const cataloguesQuery = `*[_type == "catalogue"] | order(displayOrder asc
 }`;
 
 export const aboutPageQuery = `*[_type == "aboutPage" && _id == "aboutPage"][0] {
+  eyebrow,
   pageTitle,
   heroSubtitle,
+  stats,
   storyTitle,
   storyParagraphs,
   storyImage,
   externalStoryImageUrl,
+  storyBadgeTitle,
+  storyBadgeText,
+  solutionsTitle,
+  solutionsSubtitle,
+  solutions[]{
+    icon,
+    title,
+    description,
+    image,
+    "imageUrl": image.asset->url,
+    externalImageUrl
+  },
   missionVisionTitle,
   missionVisionSubtitle,
   missionTitle,
@@ -107,6 +121,17 @@ export const aboutPageQuery = `*[_type == "aboutPage" && _id == "aboutPage"][0] 
   valuesTitle,
   valuesSubtitle,
   values,
+  leadersTitle,
+  leadersText,
+  leaders[]{
+    name,
+    role,
+    photo,
+    "photoUrl": photo.asset->url,
+    externalPhotoUrl,
+    description
+  },
+  leadersNote,
   certificationsTitle,
   certificationsSubtitle,
   certifications,

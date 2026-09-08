@@ -7,6 +7,12 @@ const iconOptions = [
   { title: 'Mission (Target)', value: 'target' },
   { title: 'Vision (Eye)', value: 'eye' },
   { title: 'Global (Globe)', value: 'globe' },
+  { title: 'Quality (Shield check)', value: 'shieldCheck' },
+  { title: 'Lighting (Lightbulb)', value: 'lightbulb' },
+  { title: 'Eco (Leaf)', value: 'leaf' },
+  { title: 'Performance (Trending up)', value: 'trendingUp' },
+  { title: 'Cable', value: 'cable' },
+  { title: 'Solar (Sun)', value: 'sun' },
 ];
 
 export const aboutPage = defineType({
@@ -14,6 +20,12 @@ export const aboutPage = defineType({
   title: 'About Page',
   type: 'document',
   fields: [
+    defineField({
+      name: 'eyebrow',
+      title: 'Hero eyebrow',
+      type: 'string',
+      initialValue: 'Since 2006',
+    }),
     defineField({
       name: 'pageTitle',
       title: 'Page title',
@@ -26,6 +38,34 @@ export const aboutPage = defineType({
       type: 'text',
       rows: 3,
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'stats',
+      title: 'Stats',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'value',
+              title: 'Value',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: { title: 'value', subtitle: 'label' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.min(1),
     }),
     defineField({
       name: 'storyTitle',
@@ -52,10 +92,80 @@ export const aboutPage = defineType({
       type: 'url',
     }),
     defineField({
+      name: 'storyBadgeTitle',
+      title: 'Story badge title',
+      type: 'string',
+      initialValue: 'ISO',
+    }),
+    defineField({
+      name: 'storyBadgeText',
+      title: 'Story badge text',
+      type: 'string',
+      initialValue: 'Quality Certified',
+    }),
+    defineField({
+      name: 'solutionsTitle',
+      title: 'Solutions section title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'solutionsSubtitle',
+      title: 'Solutions section subtitle',
+      type: 'text',
+      rows: 2,
+    }),
+    defineField({
+      name: 'solutions',
+      title: 'Solutions',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'icon',
+              title: 'Icon',
+              type: 'string',
+              options: { list: iconOptions },
+              initialValue: 'lightbulb',
+            }),
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'text',
+              rows: 3,
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: { hotspot: true },
+            }),
+            defineField({
+              name: 'externalImageUrl',
+              title: 'Or external image URL',
+              type: 'url',
+            }),
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'description', media: 'image' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.min(1),
+    }),
+    defineField({
       name: 'missionVisionTitle',
       title: 'Mission & vision section title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'missionVisionSubtitle',
@@ -134,6 +244,69 @@ export const aboutPage = defineType({
         },
       ],
       validation: (Rule) => Rule.min(1),
+    }),
+    defineField({
+      name: 'leadersTitle',
+      title: 'People section title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'leadersText',
+      title: 'People section text',
+      type: 'text',
+      rows: 3,
+    }),
+    defineField({
+      name: 'leaders',
+      title: 'People behind Clair',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'role',
+              title: 'Role',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'photo',
+              title: 'Photo',
+              type: 'image',
+              options: { hotspot: true },
+            }),
+            defineField({
+              name: 'externalPhotoUrl',
+              title: 'Or external photo URL',
+              type: 'url',
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'text',
+              rows: 3,
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: { title: 'name', subtitle: 'role', media: 'photo' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.min(1),
+    }),
+    defineField({
+      name: 'leadersNote',
+      title: 'People photo note',
+      type: 'string',
     }),
     defineField({
       name: 'certificationsTitle',
