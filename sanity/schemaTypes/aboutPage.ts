@@ -163,6 +163,42 @@ export const aboutPage = defineType({
       validation: (Rule) => Rule.min(1),
     }),
     defineField({
+      name: 'tortekEyebrow',
+      title: 'Tortek section eyebrow',
+      type: 'string',
+      initialValue: 'Wires & Cables',
+    }),
+    defineField({
+      name: 'tortekTitle',
+      title: 'Tortek section title',
+      type: 'string',
+      initialValue: 'Tortek by Clair',
+    }),
+    defineField({
+      name: 'tortekParagraphs',
+      title: 'Tortek section paragraphs',
+      type: 'array',
+      of: [{ type: 'text', rows: 3 }],
+    }),
+    defineField({
+      name: 'tortekImage',
+      title: 'Tortek section image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'externalTortekImageUrl',
+      title: 'Or external Tortek image URL',
+      type: 'url',
+      validation: (Rule) => Rule.uri({ allowRelative: true }),
+    }),
+    defineField({
+      name: 'tortekCtaLabel',
+      title: 'Tortek section button label',
+      type: 'string',
+      initialValue: 'Enquire About Tortek',
+    }),
+    defineField({
       name: 'missionVisionTitle',
       title: 'Mission & vision section title',
       type: 'string',
