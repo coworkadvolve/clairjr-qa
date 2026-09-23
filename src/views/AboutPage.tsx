@@ -133,6 +133,51 @@ export function AboutPage({ content }: AboutPageProps) {
         </div>
       </Section>
 
+      <Section background="dark">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="relative">
+            <div className="aspect-[5/3] overflow-hidden bg-neutral-800">
+              <img
+                src={content.tortekImage}
+                alt="Tortek by Clair wires and cables"
+                width={2000}
+                height={1200}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-3 left-6 right-6 h-1 bg-brand-orange md:left-10 md:right-10" />
+          </div>
+
+          <div>
+            <div className="mb-5 inline-flex items-center gap-2 bg-brand-orange/15 px-4 py-2">
+              <Cable className="text-brand-orange" size={16} />
+              <span className="text-sm font-semibold uppercase tracking-wider text-brand-orange">
+                {content.tortekEyebrow}
+              </span>
+            </div>
+            <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">
+              {content.tortekTitle}
+            </h2>
+            <div className="mb-8 space-y-4 text-lg leading-relaxed text-neutral-300">
+              {content.tortekParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <Link href={routes.contact}>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white bg-transparent text-white hover:bg-white hover:text-neutral-900 hover:!text-neutral-900"
+              >
+                {content.tortekCtaLabel}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Section>
+
       <Section background="gray">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="border border-neutral-200 bg-white p-8 shadow-sm">
