@@ -149,6 +149,11 @@ async function seed() {
       description: string;
       image?: string;
     }>;
+    tortekEyebrow: string;
+    tortekTitle: string;
+    tortekParagraphs: string[];
+    tortekImage: string;
+    tortekCtaLabel: string;
     missionVisionTitle: string;
     missionVisionSubtitle: string;
     missionTitle: string;
@@ -201,6 +206,11 @@ async function seed() {
       description: solution.description,
       ...(solution.image ? { externalImageUrl: solution.image } : {}),
     })),
+    tortekEyebrow: aboutPage.tortekEyebrow,
+    tortekTitle: aboutPage.tortekTitle,
+    tortekParagraphs: aboutPage.tortekParagraphs,
+    externalTortekImageUrl: aboutPage.tortekImage,
+    tortekCtaLabel: aboutPage.tortekCtaLabel,
     missionVisionTitle: aboutPage.missionVisionTitle,
     missionVisionSubtitle: aboutPage.missionVisionSubtitle,
     missionTitle: aboutPage.missionTitle,
