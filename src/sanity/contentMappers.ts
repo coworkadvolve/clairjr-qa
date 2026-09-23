@@ -71,6 +71,12 @@ type SanityAboutPageRow = {
     imageUrl?: string;
     externalImageUrl?: string;
   }>;
+  tortekEyebrow?: string;
+  tortekTitle?: string;
+  tortekParagraphs?: string[];
+  tortekImage?: unknown;
+  externalTortekImageUrl?: string;
+  tortekCtaLabel?: string;
   missionVisionTitle?: string;
   missionVisionSubtitle?: string;
   missionTitle?: string;
@@ -282,6 +288,16 @@ export function mapAboutPageRow(row: SanityAboutPageRow | null): AboutPageConten
               '',
           }))
         : defaultAboutPage.solutions,
+    tortekEyebrow: row.tortekEyebrow || defaultAboutPage.tortekEyebrow,
+    tortekTitle: row.tortekTitle || defaultAboutPage.tortekTitle,
+    tortekParagraphs:
+      row.tortekParagraphs && row.tortekParagraphs.length > 0
+        ? row.tortekParagraphs
+        : defaultAboutPage.tortekParagraphs,
+    tortekImage:
+      resolveAboutImage(row.tortekImage, undefined, row.externalTortekImageUrl) ||
+      defaultAboutPage.tortekImage,
+    tortekCtaLabel: row.tortekCtaLabel || defaultAboutPage.tortekCtaLabel,
     missionVisionTitle: row.missionVisionTitle || defaultAboutPage.missionVisionTitle,
     missionVisionSubtitle:
       row.missionVisionSubtitle || defaultAboutPage.missionVisionSubtitle,
