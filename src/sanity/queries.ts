@@ -112,6 +112,12 @@ export const aboutPageQuery = `*[_type == "aboutPage" && _id == "aboutPage"][0] 
     "imageUrl": image.asset->url,
     externalImageUrl
   },
+  tortekEyebrow,
+  tortekTitle,
+  tortekParagraphs,
+  tortekImage,
+  externalTortekImageUrl,
+  tortekCtaLabel,
   missionVisionTitle,
   missionVisionSubtitle,
   missionTitle,
