@@ -97,6 +97,11 @@ export interface AboutPageContent {
   solutionsTitle: string;
   solutionsSubtitle: string;
   solutions: AboutPageSolution[];
+  tortekEyebrow: string;
+  tortekTitle: string;
+  tortekParagraphs: string[];
+  tortekImage: string;
+  tortekCtaLabel: string;
   missionVisionTitle: string;
   missionVisionSubtitle: string;
   missionTitle: string;
@@ -162,6 +167,14 @@ export const defaultAboutPage: AboutPageContent = {
         'Wires and cables that support safe, reliable connections across powered environments.',
     },
   ],
+  tortekEyebrow: 'Wires & Cables',
+  tortekTitle: 'Tortek by Clair',
+  tortekParagraphs: [
+    "Tortek by Clair is Clair's wires and cables brand, built to support safe, reliable connections across powered environments.",
+    'Alongside LED lighting and solar solutions, Tortek completes Clair\'s electrical ecosystem for homes, commercial spaces, industries, institutions and infrastructure projects.',
+  ],
+  tortekImage: '/about/tortek-by-clair.webp',
+  tortekCtaLabel: 'Enquire About Tortek',
   missionVisionTitle: '',
   missionVisionSubtitle: '',
   missionTitle: 'Our Mission',
