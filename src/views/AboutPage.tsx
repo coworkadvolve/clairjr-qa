@@ -81,11 +81,11 @@ export function AboutPage({ content }: AboutPageProps) {
           </div>
 
           <div className="relative">
-            <div className="aspect-square overflow-hidden bg-white">
+            <div className="overflow-hidden bg-white">
               <img
                 src={content.storyImage}
                 alt="Clair lighting and electrical products"
-                className="h-full w-full object-cover"
+                className="block h-auto w-full object-contain"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 border border-neutral-100 bg-white p-6 shadow-xl">
@@ -125,7 +125,7 @@ export function AboutPage({ content }: AboutPageProps) {
                     <img
                       src={solution.image}
                       alt={`${solution.title} by Clair`}
-                      className="h-full w-full object-cover"
+                      className="block h-auto w-full object-contain"
                     />
                   </div>
                 ) : null}
