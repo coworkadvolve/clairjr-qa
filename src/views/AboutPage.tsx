@@ -284,12 +284,12 @@ export function AboutPage({ content }: AboutPageProps) {
           alt="Clair lighting, solar, wires and cables solutions"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-x-0 bottom-0 border-t border-white/30 bg-white/25 backdrop-blur-sm">
+        <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-gradient-to-t from-black/85 via-black/70 to-black/50 backdrop-blur-md">
           <div className="container mx-auto max-w-7xl px-4 py-6 text-center md:px-6 md:py-8 lg:px-8">
-            <h2 className="mb-3 text-[2.5rem] font-bold text-neutral-900">
+            <h2 className="mb-3 text-[1.75rem] font-bold leading-tight text-white md:text-[2.5rem]">
               {content.ecosystemTitle}
             </h2>
-            <p className="mx-auto max-w-4xl text-base leading-relaxed text-neutral-800">
+            <p className="mx-auto max-w-4xl text-base leading-relaxed text-white/90">
               {content.ecosystemText}
             </p>
           </div>
