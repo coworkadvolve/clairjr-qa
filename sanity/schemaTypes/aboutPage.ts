@@ -172,13 +172,13 @@ export const aboutPage = defineType({
       name: 'tortekTitle',
       title: 'Tortek section title',
       type: 'string',
-      initialValue: 'Tortek by Clair',
+      initialValue: 'Tortek by Clair — Wires & Cables',
     }),
     defineField({
       name: 'tortekParagraphs',
       title: 'Tortek section paragraphs',
       type: 'array',
-      of: [{ type: 'text', rows: 3 }],
+      of: [{ type: 'text', rows: 4 }],
     }),
     defineField({
       name: 'tortekImage',
@@ -190,7 +190,6 @@ export const aboutPage = defineType({
       name: 'externalTortekImageUrl',
       title: 'Or external Tortek image URL',
       type: 'url',
-      validation: (Rule) => Rule.uri({ allowRelative: true }),
     }),
     defineField({
       name: 'tortekCtaLabel',
@@ -343,6 +342,28 @@ export const aboutPage = defineType({
       name: 'leadersNote',
       title: 'People photo note',
       type: 'string',
+    }),
+    defineField({
+      name: 'ecosystemTitle',
+      title: 'Ecosystem banner title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'ecosystemText',
+      title: 'Ecosystem banner text',
+      type: 'text',
+      rows: 3,
+    }),
+    defineField({
+      name: 'ecosystemImage',
+      title: 'Ecosystem banner image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'externalEcosystemImageUrl',
+      title: 'Or external ecosystem banner image URL',
+      type: 'url',
     }),
     defineField({
       name: 'certificationsTitle',

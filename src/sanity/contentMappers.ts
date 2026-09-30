@@ -75,6 +75,7 @@ type SanityAboutPageRow = {
   tortekTitle?: string;
   tortekParagraphs?: string[];
   tortekImage?: unknown;
+  tortekImageUrl?: string;
   externalTortekImageUrl?: string;
   tortekCtaLabel?: string;
   missionVisionTitle?: string;
@@ -97,6 +98,11 @@ type SanityAboutPageRow = {
     description?: string;
   }>;
   leadersNote?: string;
+  ecosystemTitle?: string;
+  ecosystemText?: string;
+  ecosystemImage?: unknown;
+  ecosystemImageUrl?: string;
+  externalEcosystemImageUrl?: string;
   certificationsTitle?: string;
   certificationsSubtitle?: string;
   certifications?: string[];
@@ -295,7 +301,7 @@ export function mapAboutPageRow(row: SanityAboutPageRow | null): AboutPageConten
         ? row.tortekParagraphs
         : defaultAboutPage.tortekParagraphs,
     tortekImage:
-      resolveAboutImage(row.tortekImage, undefined, row.externalTortekImageUrl) ||
+      resolveAboutImage(row.tortekImage, row.tortekImageUrl, row.externalTortekImageUrl) ||
       defaultAboutPage.tortekImage,
     tortekCtaLabel: row.tortekCtaLabel || defaultAboutPage.tortekCtaLabel,
     missionVisionTitle: row.missionVisionTitle || defaultAboutPage.missionVisionTitle,
@@ -318,7 +324,7 @@ export function mapAboutPageRow(row: SanityAboutPageRow | null): AboutPageConten
     leadersTitle: row.leadersTitle || defaultAboutPage.leadersTitle,
     leadersText: row.leadersText || defaultAboutPage.leadersText,
     leaders:
-      row.leaders && row.leaders.length > 0
+      row.leaders && row.leaders.length === defaultAboutPage.leaders.length
         ? row.leaders.map((leader, index) => ({
             name: leader.name || '',
             role: leader.role || '',
@@ -330,6 +336,14 @@ export function mapAboutPageRow(row: SanityAboutPageRow | null): AboutPageConten
           }))
         : defaultAboutPage.leaders,
     leadersNote: row.leadersNote || defaultAboutPage.leadersNote,
+    ecosystemTitle: row.ecosystemTitle || defaultAboutPage.ecosystemTitle,
+    ecosystemText: row.ecosystemText || defaultAboutPage.ecosystemText,
+    ecosystemImage:
+      resolveAboutImage(
+        row.ecosystemImage,
+        row.ecosystemImageUrl,
+        row.externalEcosystemImageUrl,
+      ) || defaultAboutPage.ecosystemImage,
     certificationsTitle: row.certificationsTitle || defaultAboutPage.certificationsTitle,
     certificationsSubtitle:
       row.certificationsSubtitle || defaultAboutPage.certificationsSubtitle,

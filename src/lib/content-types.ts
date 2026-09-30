@@ -115,6 +115,9 @@ export interface AboutPageContent {
   leadersText: string;
   leaders: AboutPageLeader[];
   leadersNote: string;
+  ecosystemTitle: string;
+  ecosystemText: string;
+  ecosystemImage: string;
   certificationsTitle: string;
   certificationsSubtitle: string;
   certifications: string[];
@@ -153,27 +156,32 @@ export const defaultAboutPage: AboutPageContent = {
       title: 'LED Lighting',
       description:
         'Indoor, outdoor, commercial, industrial and specialty lighting solutions built around each application.',
+      image: '/about/led-lighting.webp',
     },
     {
       icon: 'sun',
       title: 'Solar Solutions',
       description:
         'Cleaner energy solutions for homes, commercial facilities, industries and infrastructure projects.',
+      image: '/about/solar-solutions.webp',
     },
     {
       icon: 'cable',
       title: 'Tortek by Clair',
       description:
         'Wires and cables that support safe, reliable connections across powered environments.',
+      image: '/about/tortek-wires-and-cables.webp',
     },
   ],
   tortekEyebrow: 'Wires & Cables',
-  tortekTitle: 'Tortek by Clair',
+  tortekTitle: 'Tortek by Clair — Wires & Cables',
   tortekParagraphs: [
-    "Tortek by Clair is Clair's wires and cables brand, built to support safe, reliable connections across powered environments.",
-    'Alongside LED lighting and solar solutions, Tortek completes Clair\'s electrical ecosystem for homes, commercial spaces, industries, institutions and infrastructure projects.',
+    'With Tortek by Clair, Clair enters the wires and cables segment and strengthens its ability to serve the complete electrical needs of modern spaces.',
+    'Wires and cables are the connections behind every powered environment. They may remain unseen after installation, but their role is essential to safety, reliability and long-term performance.',
+    'Tortek by Clair brings wires and cables into Clair’s growing portfolio, helping the brand support homes, commercial spaces, industries, infrastructure projects and channel partners with greater depth.',
+    'From wires and solar to LEDs, Clair is building solutions for every part of how modern spaces are powered.',
   ],
-  tortekImage: '/about/tortek-by-clair.webp',
+  tortekImage: '/about/tortek-wires-and-cables.webp',
   tortekCtaLabel: 'Enquire About Tortek',
   missionVisionTitle: '',
   missionVisionSubtitle: '',
@@ -217,31 +225,61 @@ export const defaultAboutPage: AboutPageContent = {
     "Clair's leadership brings together legacy business values, next-generation strategy and operational execution to support the brand's growth across lighting, solar and wires & cables.",
   leaders: [
     {
+      name: 'Doulat Jain',
+      role: 'Chairman',
+      image: '/about/leaders/daulat-jain.png',
+      description: `Doulat Jain brings a story of perseverance, enterprise and self-made growth to the J.G. Group.
+
+His journey has been shaped by simplicity, humility and a strong determination to build independently. In 1984, he made a decisive shift towards self-sufficiency, entering government tenders for paper and stainless steel products and developing his business with limited initial resources.
+
+Through practical thinking, resilience and a strong understanding of opportunity, Doulat Jain gradually expanded his work into paper import-export and later diversified across multiple sectors. His efforts contributed to the wider growth of the J.G. Group, with business presence across Chennai, Delhi, Dubai, Hong Kong and Nigeria.
+
+At J.G. Group, Doulat Jain represents discipline, courage and practical entrepreneurship. His journey reflects the belief that businesses are not built only through capital, but through persistence, sharp decision-making and the ability to keep moving forward through constraints.
+
+Beyond business, he has remained committed to community development, education and holistic health. His support for initiatives such as the Prajna Institute of Yoga and Allied Sciences reflects his belief in creating value beyond enterprise.`,
+    },
+    {
       name: 'Mahesh Jain',
-      role: 'Legacy Leadership',
-      image:
-        'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80',
-      description:
-        'Brings decades of business experience, ethical leadership and long-term vision rooted in the J.G. Group legacy.',
+      role: 'MD',
+      image: '/about/leaders/mahesh-jain.png',
+      description: `Mahesh Jain brings decades of business experience, ethical leadership and long-term vision to Clair.
+
+Born into a family of entrepreneurs with a legacy of more than a century, he has played an important role in the growth and diversification of the J.G. Group. Since taking charge of the family’s business operations in Delhi in 1985, he has helped expand the group across finance, investments, hospitality, real estate, electrical and electronics.
+
+His leadership has also contributed to the group’s global presence, including business expansion into Nigeria, Hong Kong and Dubai.
+
+At Clair, Mahesh Jain brings discipline, trust and continuity. His approach is rooted in building businesses that customers, partners, dealers and project teams can rely on.
+
+Beyond business, he has actively supported education, community development, holistic health and social responsibility through initiatives connected with JITO and the Prajna Institute of Yoga and Allied Sciences.`,
     },
     {
       name: 'Tanush Jain',
       role: 'Director',
-      image:
-        'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80',
-      description:
-        "Brings next-generation strategy, market understanding and a product-led view of Clair's expansion.",
+      image: '/about/leaders/tanush-jain.png',
+      description: `Tanush Jain represents the next generation of leadership at Clair and the J.G. Group.
+
+With an academic background in Economics, Applied Analytics and Business Finance from the University of Southern California, he brings a modern, data-led and strategic perspective to the business.
+
+As Director at Clair, Tanush works across strategy, operations, product expansion and market growth. His role is central to Clair’s next phase as the brand grows from LED lighting into a wider electrical solutions ecosystem.
+
+His approach combines global exposure with a practical understanding of Indian manufacturing, distribution, project requirements and customer expectations.
+
+Together, Mahesh Jain and Tanush Jain bring two important strengths to Clair: the stability of legacy and the ambition to build for the future.`,
     },
     {
       name: 'Avinash Goel',
-      role: 'Chief Executive Officer',
+      role: 'CEO',
       image:
-        'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80',
       description:
         'Leads execution, operational alignment, channel expansion and delivery discipline across the business.',
     },
   ],
-  leadersNote: 'Leadership visuals are representative and can be replaced with approved portraits.',
+  leadersNote: "Avinash Goel's visual is representative and can be replaced with an approved portrait.",
+  ecosystemTitle: 'Clair. Your Complete Electrical Ecosystem.',
+  ecosystemText:
+    'From LED lighting and solar solutions to wires and cables through Tortek by Clair, we are building an electrical solutions brand for the spaces India lives, works and grows in.',
+  ecosystemImage: '/about/electrical-ecosystem.webp',
   certificationsTitle: 'Certifications & Standards',
   certificationsSubtitle:
     "Clair's commitment to quality is supported by recognised certifications, compliance standards and energy-efficient product development.",
