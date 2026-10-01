@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import {
   Award,
-  Cable,
   Eye,
   Leaf,
   Lightbulb,
@@ -9,8 +8,9 @@ import {
   Sun,
   Target,
   TrendingUp,
-  type LucideIcon,
+  type LucideProps,
 } from 'lucide-react';
+import type { ComponentType } from 'react';
 import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { routes } from '@/lib/routes';
@@ -18,6 +18,30 @@ import type { AboutPageContent, AboutPageIcon } from '@/lib/content-types';
 
 interface AboutPageProps {
   content: AboutPageContent;
+}
+
+function WireIcon({ size = 24, className, strokeWidth = 2, ...props }: LucideProps) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M3 18.5 5.5 21 15 11.5 12.5 9z" />
+      <path d="M14 10.3 20 4.3" />
+      <path d="M14.5 11.5l6.5-3" />
+      <path d="M12.5 9.5l3-6.5" />
+    </svg>
+  );
 }
 
 const iconMap = {
@@ -31,9 +55,9 @@ const iconMap = {
   lightbulb: Lightbulb,
   leaf: Leaf,
   trendingUp: TrendingUp,
-  cable: Cable,
+  cable: WireIcon,
   sun: Sun,
-} satisfies Record<AboutPageIcon, LucideIcon>;
+} satisfies Record<AboutPageIcon, ComponentType<LucideProps>>;
 
 export function AboutPage({ content }: AboutPageProps) {
   return (
