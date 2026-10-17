@@ -240,7 +240,7 @@ Beyond business, he has remained committed to community development, education a
     },
     {
       name: 'Mahesh Jain',
-      role: 'MD',
+      role: 'Managing Director',
       image: '/about/leaders/mahesh-jain.png',
       description: `Mahesh Jain brings decades of business experience, ethical leadership and long-term vision to Clair.
 
