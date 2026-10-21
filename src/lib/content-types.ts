@@ -136,7 +136,7 @@ export const defaultAboutPage: AboutPageContent = {
     { value: '2006', label: 'Founded with LED lighting' },
     { value: '50K+', label: 'Installations completed' },
     { value: '500+', label: 'Corporate clients served' },
-    { value: '100+', label: 'Years of J.G. Group legacy' },
+    { value: '100+', label: 'Years of JG Group legacy' },
   ],
   storyTitle: 'From focused LED lighting to a complete electrical ecosystem.',
   storyParagraphs: [
@@ -228,13 +228,13 @@ export const defaultAboutPage: AboutPageContent = {
       name: 'Doulat Jain',
       role: 'Chairman',
       image: '/about/leaders/daulat-jain.png',
-      description: `Doulat Jain brings a story of perseverance, enterprise and self-made growth to the J.G. Group.
+      description: `Doulat Jain brings a story of perseverance, enterprise and self-made growth to the JG Group.
 
 His journey has been shaped by simplicity, humility and a strong determination to build independently. In 1984, he made a decisive shift towards self-sufficiency, entering government tenders for paper and stainless steel products and developing his business with limited initial resources.
 
-Through practical thinking, resilience and a strong understanding of opportunity, Doulat Jain gradually expanded his work into paper import-export and later diversified across multiple sectors. His efforts contributed to the wider growth of the J.G. Group, with business presence across Chennai, Delhi, Dubai, Hong Kong and Nigeria.
+Through practical thinking, resilience and a strong understanding of opportunity, Doulat Jain gradually expanded his work into paper import-export and later diversified across multiple sectors. His efforts contributed to the wider growth of the JG Group, with business presence across Chennai, Delhi, Dubai, Hong Kong and Nigeria.
 
-At J.G. Group, Doulat Jain represents discipline, courage and practical entrepreneurship. His journey reflects the belief that businesses are not built only through capital, but through persistence, sharp decision-making and the ability to keep moving forward through constraints.
+At JG Group, Doulat Jain represents discipline, courage and practical entrepreneurship. His journey reflects the belief that businesses are not built only through capital, but through persistence, sharp decision-making and the ability to keep moving forward through constraints.
 
 Beyond business, he has remained committed to community development, education and holistic health. His support for initiatives such as the Prajna Institute of Yoga and Allied Sciences reflects his belief in creating value beyond enterprise.`,
     },
@@ -244,7 +244,7 @@ Beyond business, he has remained committed to community development, education a
       image: '/about/leaders/mahesh-jain.webp',
       description: `Mahesh Jain brings decades of business experience, ethical leadership and long-term vision to Clair.
 
-Born into a family of entrepreneurs with a legacy of more than a century, he has played an important role in the growth and diversification of the J.G. Group. Since taking charge of the family’s business operations in Delhi in 1985, he has helped expand the group across finance, investments, hospitality, real estate, electrical and electronics.
+Born into a family of entrepreneurs with a legacy of more than a century, he has played an important role in the growth and diversification of the JG Group. Since taking charge of the family’s business operations in Delhi in 1985, he has helped expand the group across finance, investments, hospitality, real estate, electrical and electronics.
 
 His leadership has also contributed to the group’s global presence, including business expansion into Nigeria, Hong Kong and Dubai.
 
@@ -256,7 +256,7 @@ Beyond business, he has actively supported education, community development, hol
       name: 'Tanush Jain',
       role: 'Director',
       image: '/about/leaders/tanush-jain.webp',
-      description: `Tanush Jain represents the next generation of leadership at Clair and the J.G. Group.
+      description: `Tanush Jain represents the next generation of leadership at Clair and the JG Group.
 
 With an academic background in Economics, Applied Analytics and Business Finance from the University of Southern California, he brings a modern, data-led and strategic perspective to the business.
 
