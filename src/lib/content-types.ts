@@ -241,7 +241,7 @@ Beyond business, he has remained committed to community development, education a
     {
       name: 'Mahesh Jain',
       role: 'Managing Director',
-      image: '/about/leaders/mahesh-jain.png',
+      image: '/about/leaders/mahesh-jain.webp',
       description: `Mahesh Jain brings decades of business experience, ethical leadership and long-term vision to Clair.
 
 Born into a family of entrepreneurs with a legacy of more than a century, he has played an important role in the growth and diversification of the J.G. Group. Since taking charge of the family’s business operations in Delhi in 1985, he has helped expand the group across finance, investments, hospitality, real estate, electrical and electronics.
@@ -255,7 +255,7 @@ Beyond business, he has actively supported education, community development, hol
     {
       name: 'Tanush Jain',
       role: 'Director',
-      image: '/about/leaders/tanush-jain.png',
+      image: '/about/leaders/tanush-jain.webp',
       description: `Tanush Jain represents the next generation of leadership at Clair and the J.G. Group.
 
 With an academic background in Economics, Applied Analytics and Business Finance from the University of Southern California, he brings a modern, data-led and strategic perspective to the business.
@@ -269,7 +269,7 @@ Together, Mahesh Jain and Tanush Jain bring two important strengths to Clair: th
     {
       name: 'Avinash Goel',
       role: 'CEO',
-      image: '/about/leaders/avinash-goel.jpg',
+      image: '/about/leaders/avinash-goel.webp',
       description:
         "An Engineering graduate from IIT Roorkee, Avinash Goel brings extensive leadership experience across the electrical and lighting industry, having worked with leading Indian and global organizations.\n\nWith deep expertise spanning product management, techno-commercial sales, channel (trade, commercial) management, manufacturing, sourcing and business operations, he combines technical insight with strong market understanding. His experience across multiple electrical business segments enables him to connect product innovation with customer needs and business growth.\n\nAt Clair, Avinash leads the business with a focus on building high-quality, market-relevant solutions while strengthening operational excellence and commercial performance. His customer-centric approach, strategic vision and execution discipline continue to drive Clair’s growth and reinforce its position as a trusted partner in the lighting industry.",
     },
