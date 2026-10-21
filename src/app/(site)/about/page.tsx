@@ -5,6 +5,9 @@ import { pageMetadata } from '@/lib/seo/metadata';
 
 export const metadata = pageMetadata.about;
 
+// Re-fetch Studio content at most every 60 seconds so edits show without a redeploy.
+export const revalidate = 60;
+
 export default async function Page() {
   const [siteSettings, aboutPage] = await Promise.all([
     contentService.getSiteSettings(),
