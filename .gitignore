@@ -44,3 +44,5 @@ Domestic Logo/
 Domestic Logo.zip
 Export logo/
 Export logo.zip
+# Local preview of product media (development only)
+public/dev-media

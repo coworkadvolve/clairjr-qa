@@ -7,7 +7,6 @@ import { ArrowRight, CheckCircle2, TrendingUp, Download, Quote, Star } from 'luc
 import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { ProductCard } from '../components/ProductCard';
-import { Product } from '../lib/data';
 import { RequestQuotePopup } from '../components/RequestQuotePopup';
 import { CataloguePopup } from '../components/CataloguePopup';
 import { routes } from '@/lib/routes';
@@ -15,8 +14,18 @@ import type { Catalogue, Testimonial } from '@/lib/content-types';
 import type { BlogPost } from '@/lib/blog';
 import { BlogCard } from '@/components/BlogCard';
 
+export interface FeaturedProduct {
+  id: string;
+  name: string;
+  slug: string;
+  href: string;
+  category: string;
+  short_description: string;
+  image_url: string;
+}
+
 interface HomePageProps {
-  initialProducts: Product[];
+  initialProducts: FeaturedProduct[];
   testimonials: Testimonial[];
   catalogues: Catalogue[];
   blogPosts: BlogPost[];
@@ -30,13 +39,6 @@ export function HomePage({ initialProducts, testimonials, catalogues, blogPosts 
 
   const products = initialProducts;
 
-  const getCategoryName = (productName: string) => {
-    if (productName.includes('Glass')) return 'Commercial';
-    if (productName.includes('Dawn')) return 'Industrial';
-    if (productName.includes('Track')) return 'Office';
-    if (productName.includes('Bulb')) return 'General';
-    return 'Decorative';
-  };
 
   return (
     <div>
@@ -276,10 +278,11 @@ export function HomePage({ initialProducts, testimonials, catalogues, blogPosts 
                     <ProductCard
                       key={product.id}
                       name={product.name}
-                      shortDescription={product.short_description || product.description.substring(0, 100) + '...'}
+                      shortDescription={product.short_description}
                       imageUrl={product.image_url}
-                      category={getCategoryName(product.name)}
+                      category={product.category}
                       slug={product.slug}
+                      href={product.href}
                       onRequestQuote={() => {
                         setSelectedProductName(product.name);
                         setQuotePopupOpen(true);

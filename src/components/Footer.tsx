@@ -2,12 +2,31 @@ import Link from 'next/link';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { footerQuickLinks, routes } from '@/lib/routes';
 import type { SiteSettings } from '@/lib/content-types';
+import type { Menu as ProductMenu } from '@/lib/catalog';
 
 interface FooterProps {
   siteSettings: SiteSettings;
+  productMenu?: ProductMenu | null;
 }
 
-export function Footer({ siteSettings }: FooterProps) {
+const FALLBACK_PRODUCT_LINKS = [
+  { label: 'Indoor Lights', href: '/products/indoor' },
+  { label: 'Outdoor Lights', href: '/products/outdoor' },
+];
+
+export function Footer({ siteSettings, productMenu }: FooterProps) {
+  // Two group links, then the largest categories of each group.
+  const productLinks = productMenu?.total
+    ? [
+        ...FALLBACK_PRODUCT_LINKS,
+        ...productMenu.groups.flatMap((g) =>
+          [...g.categories]
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 2)
+            .map((c) => ({ label: c.title, href: `/products/${g.group}/${c.slug}` })),
+        ),
+      ]
+    : [{ label: 'All Products', href: routes.products }];
   const { address } = siteSettings;
 
   return (
@@ -100,31 +119,13 @@ export function Footer({ siteSettings }: FooterProps) {
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Products</h3>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href={routes.products} className="text-white hover:text-brand-orange transition-colors">
-                  Commercial Lighting
-                </Link>
-              </li>
-              <li>
-                <Link href={routes.products} className="text-white hover:text-brand-orange transition-colors">
-                  Industrial Lighting
-                </Link>
-              </li>
-              <li>
-                <Link href={routes.products} className="text-white hover:text-brand-orange transition-colors">
-                  Office Lighting
-                </Link>
-              </li>
-              <li>
-                <Link href={routes.products} className="text-white hover:text-brand-orange transition-colors">
-                  General Lighting
-                </Link>
-              </li>
-              <li>
-                <Link href={routes.products} className="text-white hover:text-brand-orange transition-colors">
-                  Decorative Lighting
-                </Link>
-              </li>
+              {productLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-white hover:text-brand-orange transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

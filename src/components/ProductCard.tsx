@@ -8,6 +8,7 @@ interface ProductCardProps {
   imageUrl: string;
   category: string;
   slug: string;
+  href?: string;
   onRequestQuote?: () => void;
 }
 
@@ -17,6 +18,7 @@ export function ProductCard({
   imageUrl,
   category,
   slug,
+  href,
   onRequestQuote,
 }: ProductCardProps) {
   return (
@@ -42,7 +44,7 @@ export function ProductCard({
         </p>
         <div className="flex items-center gap-3 mt-auto pt-2">
           <Link
-            href={routes.product(slug)}
+            href={href ?? routes.product(slug)}
             className="inline-flex items-center gap-2 text-brand-orange font-medium hover:gap-3 transition-all duration-200"
           >
             View Details
