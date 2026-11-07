@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from './Button';
-import { navItems, pathnameToNavKey, routes } from '@/lib/routes';
+import { headerNavItems as navItems, pathnameToNavKey, routes } from '@/lib/routes';
 import type { SiteSettings } from '@/lib/content-types';
 import type { Menu as ProductMenu } from '@/lib/catalog';
 

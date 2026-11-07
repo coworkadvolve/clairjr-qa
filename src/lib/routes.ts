@@ -26,6 +26,13 @@ export function pathnameToNavKey(pathname: string): string {
   return 'home';
 }
 
+/**
+ * Temporarily hide "Products" from the header (desktop and mobile) while the new
+ * Products section is under review. The product pages still work by direct link.
+ * Set to true to show it again.
+ */
+export const SHOW_PRODUCTS_IN_HEADER = false;
+
 export const navItems = [
   { label: 'Home', href: routes.home, value: 'home' },
   { label: 'Products', href: routes.products, value: 'products' },
@@ -36,6 +43,8 @@ export const navItems = [
   { label: 'Franchise', href: routes.franchise, value: 'franchise' },
   { label: 'Contact', href: routes.contact, value: 'contact' },
 ] as const;
+
+export const headerNavItems = navItems.filter((item) => SHOW_PRODUCTS_IN_HEADER || item.value !== 'products');
 
 export const footerQuickLinks = [
   { label: 'Home', href: routes.home },
