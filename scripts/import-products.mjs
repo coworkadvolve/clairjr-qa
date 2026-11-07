@@ -11,6 +11,7 @@
  *   SANITY_PROJECT_ID=zo3u8ikx SANITY_DATASET=staging SANITY_TOKEN=<editor token> \
  *     node import-products.mjs --package=<path to clair-products-developer-package> \
  *       [--dry-run] [--only=<slug>] [--concurrency=4] [--skip-existing] [--remove-old]
+ *       [--max-seconds=N]   stop starting new products after N seconds (run again with --skip-existing to continue)
  *
  * Writing to the production dataset additionally requires --allow-production.
  * Safe to re-run: documents use fixed ids (category-<slug>, product-<slug>) and Sanity
@@ -207,8 +208,11 @@ async function main() {
   const total = queue.length;
   let n = 0;
   const failed = [];
+  const started = Date.now();
+  const budget = Number(args['max-seconds'] || 0) * 1000;
   const worker = async () => {
     while (queue.length) {
+      if (budget && Date.now() - started > budget) return;
       const p = queue.shift();
       try {
         await importProduct(p, ++n, total);
@@ -219,7 +223,7 @@ async function main() {
     }
   };
   await Promise.all(Array.from({ length: Number(args.concurrency || 4) }, worker));
-  console.log(`Done. ${total - failed.length} imported, ${failed.length} failed, ${missing} missing files.`);
+  console.log(`Done. ${n - failed.length} imported this run, ${failed.length} failed, ${missing} missing files, ${queue.length} left.`);
   if (failed.length) console.log(`Re-run with --skip-existing to retry: ${failed.join(', ')}`);
 }
 
