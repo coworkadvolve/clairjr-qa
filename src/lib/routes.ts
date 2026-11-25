@@ -27,11 +27,10 @@ export function pathnameToNavKey(pathname: string): string {
 }
 
 /**
- * Temporarily hide "Products" from the header (desktop and mobile) while the new
- * Products section is under review. The product pages still work by direct link.
- * Set to true to show it again.
+ * Show "Products" in the header (desktop and mobile). Set to false to hide it
+ * temporarily; the product pages still work by direct link either way.
  */
-export const SHOW_PRODUCTS_IN_HEADER = false;
+export const SHOW_PRODUCTS_IN_HEADER = true;
 
 export const navItems = [
   { label: 'Home', href: routes.home, value: 'home' },
